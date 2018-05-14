@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PayBus</string>
+    <string name="login">Login PayBus - São Bento</string>
+    <string name="painel_de_controle">Painel de Controle</string>
+    <string name="sobre">Sobre</string>
+
+    <string-array name="selecionar_tipo_de_usuario">
+        <item>Selecione o tipo de usuário</item>
+        <item>ALUNO</item>
+        <item>COBRADOR</item>
+        <item>MOTORISTA</item>
+    </string-array>
+
+    <string-array name="selecionar_instituicao">
+        <item>Selecione a Instituição</item>
+        <item>FIP</item>
+        <item>UEPB</item>
+        <item>UFCG</item>
+        <item>IFPB</item>
+        <item>CULTURA INGLESA</item>
+        <item>UNOPAR</item>
+        <item>CURSINHO</item>
+        <item>OUTROS</item>
+    </string-array>
+
+</resources>

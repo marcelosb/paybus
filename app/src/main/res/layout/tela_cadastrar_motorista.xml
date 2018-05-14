@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        tools:context=".activitys.CadastrarMotoristaActivity">
+
+        <EditText
+            android:id="@+id/campoNomeSobrenomeUsuario"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Nome e Sobrenome"
+            android:inputType="textCapCharacters|textPersonName"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iconeNomeSobrenome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/campoCPFUsuario"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="CPF"
+            android:inputType="textPersonName|number"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconeCPF"
+            app:layout_constraintTop_toBottomOf="@+id/campoNomeSobrenomeUsuario" />
+
+        <EditText
+            android:id="@+id/campoCelularUsuario"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Celular"
+            android:inputType="textPersonName|phone"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconeCelular"
+            app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
+
+        <EditText
+            android:id="@+id/campoEnderecoUsuario"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Endereço"
+            android:inputType="textCapCharacters|textPostalAddress"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconeEndereco"
+            app:layout_constraintTop_toBottomOf="@+id/campoCelularUsuario" />
+
+        <EditText
+            android:id="@+id/campoSenhaUsuario"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconeSenha"
+            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoUsuario" />
+
+        <EditText
+            android:id="@+id/campoCNH"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="CNH"
+            android:inputType="number"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconeCNH"
+            app:layout_constraintTop_toBottomOf="@+id/campoSenhaUsuario" />
+
+        <Button
+            android:id="@+id/botaoCadastrarUsuario"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/holo_orange_light"
+            android:clickable="true"
+            android:text="CADASTRAR"
+            android:textColor="@android:color/background_dark"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/campoCNH" />
+
+
+        <ImageView
+            android:id="@+id/iconeNomeSobrenome"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/icone_aluno"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/iconeCPF"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconeNomeSobrenome"
+            app:srcCompat="@drawable/icone_cpf" />
+
+        <ImageView
+            android:id="@+id/iconeCelular"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconeCPF"
+            app:srcCompat="@drawable/icone_celular" />
+
+        <ImageView
+            android:id="@+id/iconeEndereco"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconeCelular"
+            app:srcCompat="@drawable/icone_endereco" />
+
+        <ImageView
+            android:id="@+id/iconeSenha"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconeEndereco"
+            app:srcCompat="@drawable/icone_senha" />
+
+        <ImageView
+            android:id="@+id/iconeCNH"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconeSenha"
+            app:srcCompat="@drawable/icone_cnh" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
