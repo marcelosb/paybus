@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
+    android:layout_marginBottom="30dp"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
-    android:layout_marginBottom="30dp"
+    android:layout_marginTop="30dp"
+    android:clickable="true"
     tools:context=".activitys.CadastrarAlunoActivity">
 
 
@@ -16,12 +17,14 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:longClickable="true"
         android:src="@drawable/icone_aluno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/campoNomeCompletoAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -36,18 +39,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/comboBoxSelecionarInstituicao"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="10dp"
         android:background="#dfdede"
         android:entries="@array/selecionar_instituicao"
-        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoAlunoOuCobrador" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -68,7 +70,7 @@
         app:srcCompat="@drawable/icone_cpf" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/campoCPFAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -77,9 +79,10 @@
         android:ems="10"
         android:hint="CPF"
         android:inputType="number"
+        android:maxLength="11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+        app:layout_constraintTop_toBottomOf="@+id/comboBoxSelecionarInstituicao" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -87,11 +90,11 @@
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
         app:srcCompat="@drawable/icone_celular" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/campoTelefoneAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -101,8 +104,9 @@
         android:hint="Celular"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAlunoOuCobrador" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -110,11 +114,11 @@
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/icone_endereco" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/campoEnderecoAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -122,11 +126,11 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Endereço"
-        android:inputType="textPostalAddress"
+        android:inputType="textCapCharacters|textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFAlunoOuCobrador" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -134,11 +138,11 @@
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/icone_senha" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/campoSenhaAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -150,19 +154,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAlunoOuCobrador" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/botaoCadastrarAlunoOuCobrador"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
+        android:onClick="cadastrarAlunoOuCobrador"
         android:text="CADASTRAR"
         android:textAllCaps="false"
         android:textColor="@color/branco"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/campoSenhaAlunoOuCobrador" />
 </android.support.constraint.ConstraintLayout>

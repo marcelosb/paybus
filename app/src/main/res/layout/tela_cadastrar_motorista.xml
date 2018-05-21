@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         <EditText
             android:id="@+id/campoNomeSobrenomeUsuario"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
@@ -40,7 +41,8 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="CPF"
-            android:inputType="textPersonName|number"
+            android:inputType="number"
+            android:maxLength="11"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeCPF"
@@ -55,11 +57,12 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Celular"
-            android:inputType="textPersonName|phone"
+            android:inputType="phone"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeCelular"
-            app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCNH" />
 
         <EditText
             android:id="@+id/campoEnderecoUsuario"
@@ -73,8 +76,9 @@
             android:inputType="textCapCharacters|textPostalAddress"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeEndereco"
-            app:layout_constraintTop_toBottomOf="@+id/campoCelularUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
 
         <EditText
             android:id="@+id/campoSenhaUsuario"
@@ -89,7 +93,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeSenha"
-            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCelularUsuario" />
 
         <EditText
             android:id="@+id/campoCNH"
@@ -101,25 +105,27 @@
             android:ems="10"
             android:hint="CNH"
             android:inputType="number"
+            android:maxLength="11"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeCNH"
-            app:layout_constraintTop_toBottomOf="@+id/campoSenhaUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoUsuario" />
 
         <Button
             android:id="@+id/botaoCadastrarUsuario"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/holo_orange_light"
+            android:layout_marginTop="30dp"
+            android:background="#db9c1d"
             android:clickable="true"
             android:text="CADASTRAR"
-            android:textColor="@android:color/background_dark"
+            android:textColor="@android:color/background_light"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoCNH" />
+            app:layout_constraintTop_toBottomOf="@+id/campoSenhaUsuario" />
 
 
         <ImageView
@@ -150,7 +156,7 @@
             android:layout_marginTop="30dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconeCPF"
+            app:layout_constraintTop_toBottomOf="@+id/iconeCNH"
             app:srcCompat="@drawable/icone_celular" />
 
         <ImageView
@@ -160,7 +166,7 @@
             android:layout_marginTop="30dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconeCelular"
+            app:layout_constraintTop_toBottomOf="@+id/iconeCPF"
             app:srcCompat="@drawable/icone_endereco" />
 
         <ImageView
@@ -170,7 +176,7 @@
             android:layout_marginTop="30dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconeEndereco"
+            app:layout_constraintTop_toBottomOf="@+id/iconeCelular"
             app:srcCompat="@drawable/icone_senha" />
 
         <ImageView
@@ -180,7 +186,7 @@
             android:layout_marginTop="30dp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconeSenha"
+            app:layout_constraintTop_toBottomOf="@+id/iconeEndereco"
             app:srcCompat="@drawable/icone_cnh" />
 
 

@@ -67,13 +67,27 @@
             android:label="Painel do Administrador"
             android:parentActivityName=".activitys.TelaPrincipalActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activitys.CadastrarUsuariosActivity"
             android:label="Cadastrar Usuários"
             android:parentActivityName=".activitys.AdministradorActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.EditarAlunoActivity"
+            android:label="@string/title_activity_editar_aluno"
+            android:parentActivityName=".activitys.ListaDeAlunosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.CadastrarCobradorActivity"
+            android:label="Cadastrar Cobrador"
+            android:parentActivityName=".activitys.CadastrarUsuariosActivity"
+            android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activitys.PainelDeControleAlunoActivity"
+            android:label="Painel de Controle Aluno"
+            android:parentActivityName=".activitys.TelaPrincipalActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

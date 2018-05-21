@@ -3,13 +3,16 @@ package br.com.paybus.modelo;
 public class Motorista {
 
     private Integer id;
-    private String nome;
-    private String sobrenome;
+    private String nomeCompleto;
     private String cpf;
-    private String cnh;
-    private String celular;
     private String endereco;
+    private String cnh;
+    private String telefone;
     private String senha;
+    private String tipoDeUsuario;
+
+    public Motorista() {
+    }
 
     public Integer getId() {
         return id;
@@ -19,20 +22,12 @@ public class Motorista {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getCpf() {
@@ -43,22 +38,6 @@ public class Motorista {
         this.cpf = cpf;
     }
 
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
     public String getEndereco() {
         return endereco;
     }
@@ -67,11 +46,35 @@ public class Motorista {
         this.endereco = endereco;
     }
 
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getTipoDeUsuario() {
+        return tipoDeUsuario;
+    }
+
+    public void setTipoDeUsuario(String tipoDeUsuario) {
+        this.tipoDeUsuario = tipoDeUsuario;
     }
 }

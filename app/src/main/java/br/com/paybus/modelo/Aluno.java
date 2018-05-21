@@ -1,13 +1,18 @@
 package br.com.paybus.modelo;
 
 public class Aluno {
+
     private Integer id;
-    private String nome;
-    private String sobrenome;
+    private String nomeCompleto;
+    private String instituicao;
     private String cpf;
-    private String celular;
     private String endereco;
+    private String telefone;
     private String senha;
+    private String tipoDeUsuario;
+
+    public Aluno() {
+    }
 
     public Integer getId() {
         return id;
@@ -17,20 +22,20 @@ public class Aluno {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getInstituicao() {
+        return instituicao;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
     }
 
     public String getCpf() {
@@ -41,14 +46,6 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
     public String getEndereco() {
         return endereco;
     }
@@ -57,11 +54,32 @@ public class Aluno {
         this.endereco = endereco;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getTipoDeUsuario() {
+        return tipoDeUsuario;
+    }
+
+    public void setTipoDeUsuario(String tipoDeUsuario) {
+        this.tipoDeUsuario = tipoDeUsuario;
+    }
+
+    @Override
+    public String toString(){
+        return nomeCompleto +" \n "+ instituicao;
     }
 }

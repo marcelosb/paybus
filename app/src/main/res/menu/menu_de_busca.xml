@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscarAluno"
+        android:icon="@drawable/admin_novo_usuario"
+        android:orderInCategory="300"
+        android:title="Informe o nome do Aluno"
+        app:actionViewClass="android:support.v7.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+</menu>

@@ -20,7 +20,7 @@ public class CadastrarUsuariosActivity extends AppCompatActivity {
     }
 
     public void irParaCadastroDeCobrador(View view){
-        startActivity(new Intent(CadastrarUsuariosActivity.this, CadastrarAlunoActivity.class));
+        startActivity(new Intent(CadastrarUsuariosActivity.this, CadastrarCobradorActivity.class));
     }
 
     public void irParaCadastroDeAluno(View view){
