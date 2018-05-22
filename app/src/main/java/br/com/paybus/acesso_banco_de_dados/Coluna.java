@@ -10,6 +10,7 @@ public class Coluna {
     public static final String TELEFONE = "telefone";
     public static final String SENHA = "senha";
     public static final String TIPO_DE_USUARIO = "tipo_de_usuario";
+    public static final String EMAIL = "email";
 
     // ESSA COLUNA PERTENCE A TABELA MOTORISTA
     public static final String CNH_MOTORISTA = "cnh";

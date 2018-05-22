@@ -38,15 +38,16 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
         EditText campoCPFAluno = findViewById(R.id.campoCPFAlunoOuCobrador);
         EditText campoEnderecoAluno = findViewById(R.id.campoEnderecoAlunoOuCobrador);
         EditText campoTelefoneAluno = findViewById(R.id.campoTelefoneAlunoOuCobrador);
-        EditText campoSenhaAluno = findViewById(R.id.campoSenhaAlunoOuCobrador);
+        EditText campoEmailAluno = findViewById(R.id.campoEmailAluno);
 
         aluno.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
         aluno.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
         aluno.setCpf(campoCPFAluno.getText().toString());
         aluno.setEndereco(campoEnderecoAluno.getText().toString());
         aluno.setTelefone(campoTelefoneAluno.getText().toString());
-        aluno.setSenha(campoSenhaAluno.getText().toString());
+        aluno.setSenha(campoCPFAluno.getText().toString());
         aluno.setTipoDeUsuario("aluno");
+        aluno.setEmail(campoEmailAluno.getText().toString());
 
         dao.inserirAluno(aluno);
 

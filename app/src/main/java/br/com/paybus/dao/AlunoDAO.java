@@ -34,6 +34,7 @@ public class AlunoDAO {
             values.put(Coluna.TELEFONE, aluno.getTelefone());
             values.put(Coluna.SENHA, aluno.getSenha());
             values.put(Coluna.TIPO_DE_USUARIO, aluno.getTipoDeUsuario());
+            values.put(Coluna.EMAIL, aluno.getEmail());
 
             db.insert(Tabela.ALUNO,null, values);
 
@@ -64,7 +65,7 @@ public class AlunoDAO {
             values.put(Coluna.CPF, aluno.getCpf());
             values.put(Coluna.ENDERECO, aluno.getEndereco());
             values.put(Coluna.TELEFONE, aluno.getTelefone());
-            values.put(Coluna.SENHA, aluno.getSenha());
+            values.put(Coluna.EMAIL, aluno.getEmail());
 
             db.update(Tabela.ALUNO, values,Coluna.ID + "= ?",new String[]{String.valueOf(aluno.getId())});
         }catch(Exception e){
@@ -90,6 +91,8 @@ public class AlunoDAO {
                     aluno.setEndereco(cursor.getString(4));
                     aluno.setTelefone(cursor.getString(5));
                     aluno.setSenha(cursor.getString(6));
+                    aluno.setTipoDeUsuario(cursor.getString(7));
+                    aluno.setEmail(cursor.getString(8));
 
                     listaDeAlunos.add(aluno);
                 } while (cursor.moveToNext());
@@ -116,6 +119,8 @@ public class AlunoDAO {
                 aluno.setEndereco(cursor.getString(4));
                 aluno.setTelefone(cursor.getString(5));
                 aluno.setSenha(cursor.getString(6));
+                aluno.setTipoDeUsuario(cursor.getString(7));
+                aluno.setEmail(cursor.getString(8));
             }
         }catch(Exception e){
             e.printStackTrace();

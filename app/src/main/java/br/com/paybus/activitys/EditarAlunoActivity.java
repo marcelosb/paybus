@@ -31,13 +31,12 @@ public class EditarAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_editar_aluno);
 
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFF8800")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFF8800")));
 
         id = getIntent().getIntExtra("id_aluno", -1);
 
         String nomeCompleto = getIntent().getStringExtra("nome_completo_aluno");
-        EditText nomeCompletoDoAluno = findViewById(R.id.campoNomeCompletoAlunoOuCobradorEditar);
+        EditText nomeCompletoDoAluno = findViewById(R.id.campoNomeAlunoEditar);
         nomeCompletoDoAluno.setText(nomeCompleto);
 
         String instituicaoAluno = getIntent().getStringExtra("instituicao_aluno");
@@ -51,44 +50,42 @@ public class EditarAlunoActivity extends AppCompatActivity {
         }
 
         String CPF = getIntent().getStringExtra("cpf_aluno");
-        EditText campoCPF = findViewById(R.id.campoCPFAlunoOuCobradorEditar);
+        EditText campoCPF = findViewById(R.id.campoCPFAlunoEditar);
         campoCPF.setText(CPF);
 
         String endereco = getIntent().getStringExtra("endereco_aluno");
-        EditText campoEndereco = findViewById(R.id.campoEnderecoAlunoOuCobradorEditar);
+        EditText campoEndereco = findViewById(R.id.campoEnderecoAlunoEditar);
         campoEndereco.setText(endereco);
 
         String telefone = getIntent().getStringExtra("telefone_aluno");
-        EditText campoTelefone = findViewById(R.id.campoTelefoneAlunoOuCobradorEditar);
+        EditText campoTelefone = findViewById(R.id.campoTelefoneAlunoEditar);
         campoTelefone.setText(telefone);
 
-        String senha = getIntent().getStringExtra("senha_aluno");
-        EditText campoSenha = findViewById(R.id.campoSenhaAlunoOuCobradorEditar);
-        campoSenha.setText(senha);
+        String email = getIntent().getStringExtra("email_aluno");
+        EditText campoEmail = findViewById(R.id.campoEmailAlunoEditar);
+        campoEmail.setText(email);
 
     }
 
     public void editarAlunoOuCobrador(View view){
 
-        aluno = new Aluno();
-        dao = new AlunoDAO(this);
-
-        EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeCompletoAlunoOuCobradorEditar);
+        EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeAlunoEditar);
         Spinner comboBoxSelecionarInstituicao = findViewById(R.id.comboBoxSelecionarInstituicaoEditar);
-        EditText campoCPFAluno = findViewById(R.id.campoCPFAlunoOuCobradorEditar);
-        EditText campoEnderecoAluno = findViewById(R.id.campoEnderecoAlunoOuCobradorEditar);
-        EditText campoTelefoneAluno = findViewById(R.id.campoTelefoneAlunoOuCobradorEditar);
-        EditText campoSenhaAluno = findViewById(R.id.campoSenhaAlunoOuCobradorEditar);
+        EditText campoCPFAluno = findViewById(R.id.campoCPFAlunoEditar);
+        EditText campoEnderecoAluno = findViewById(R.id.campoEnderecoAlunoEditar);
+        EditText campoTelefoneAluno = findViewById(R.id.campoTelefoneAlunoEditar);
+        EditText campoEmailAluno = findViewById(R.id.campoEmailAlunoEditar);
 
+        aluno = new Aluno();
         aluno.setId(id);
         aluno.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
         aluno.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
         aluno.setCpf(campoCPFAluno.getText().toString());
         aluno.setEndereco(campoEnderecoAluno.getText().toString());
         aluno.setTelefone(campoTelefoneAluno.getText().toString());
-        aluno.setSenha(campoSenhaAluno.getText().toString());
+        aluno.setEmail(campoEmailAluno.getText().toString());
 
-
+        dao = new AlunoDAO(this);
         dao.atualizarAluno(aluno);
 
         AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(EditarAlunoActivity.this);
@@ -97,7 +94,6 @@ public class EditarAlunoActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Alteração realizada com sucesso!");
         caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                //finish();
                 startActivity(new Intent(EditarAlunoActivity.this, ListaDeAlunosActivity.class));
             }
         });

@@ -10,6 +10,7 @@ public class Aluno {
     private String telefone;
     private String senha;
     private String tipoDeUsuario;
+    private String email;
 
     public Aluno() {
     }
@@ -76,6 +77,14 @@ public class Aluno {
 
     public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

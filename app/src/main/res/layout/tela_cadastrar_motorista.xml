@@ -81,15 +81,15 @@
             app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
 
         <EditText
-            android:id="@+id/campoSenhaUsuario"
+            android:id="@+id/campoEmailMotorista"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Senha"
-            android:inputType="textPassword"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeSenha"
@@ -125,7 +125,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoSenhaUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoEmailMotorista" />
 
 
         <ImageView
@@ -177,7 +177,7 @@
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iconeCelular"
-            app:srcCompat="@drawable/icone_senha" />
+            app:srcCompat="@drawable/icone_email" />
 
         <ImageView
             android:id="@+id/iconeCNH"

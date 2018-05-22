@@ -19,43 +19,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activitys.PainelDeControleActivity"
+            android:name=".activitys.PainelDeControleMotoristaCobradorActivity"
             android:label="@string/painel_de_controle"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.SobreActivity"
             android:label="Sobre"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.ListaDeAlunosActivity"
             android:label="Lista de Alunos"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activitys.MotoristaActivity"
-            android:label="Dados do Motorista"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
+            android:name=".activitys.EditarSenhaDeUsuarioActivity"
+            android:label="Alterar Senha"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.InadimplentesActivity"
             android:label="Inadimplentes"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.ReceberPagamentosActivity"
             android:label="Receber Pagamentos"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.RelatoriosActivity"
             android:label="Relatórios"
-            android:parentActivityName=".activitys.PainelDeControleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.CadastrarMotoristaActivity"
             android:label="Cadastrar Motorista"
-            android:parentActivityName=".activitys.CadastrarUsuariosActivity"
+            android:parentActivityName=".activitys.ListaDeMotoristasActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.CadastrarAlunoActivity"
@@ -63,14 +57,9 @@
             android:parentActivityName=".activitys.ListaDeAlunosActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activitys.AdministradorActivity"
-            android:label="Painel do Administrador"
-            android:parentActivityName=".activitys.TelaPrincipalActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activitys.CadastrarUsuariosActivity"
-            android:label="Cadastrar Usuários"
-            android:parentActivityName=".activitys.AdministradorActivity"
+            android:name=".activitys.UsuariosActivity"
+            android:label="Usuários"
+            android:parentActivityName=".activitys.PainelDeControleAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.EditarAlunoActivity"
@@ -80,14 +69,28 @@
         <activity
             android:name=".activitys.CadastrarCobradorActivity"
             android:label="Cadastrar Cobrador"
-            android:parentActivityName=".activitys.CadastrarUsuariosActivity"
+            android:parentActivityName=".activitys.ListaDeCobradoresActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activitys.PainelDeControleAlunoActivity"
             android:label="Painel de Controle Aluno"
-            android:parentActivityName=".activitys.TelaPrincipalActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PainelDeControleAdminActivity"
+            android:label="Painel de Controle Administrador"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.ListaDeCobradoresActivity"
+            android:label="Lista de Cobradores"
+            android:parentActivityName=".activitys.UsuariosActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activitys.ListaDeMotoristasActivity"
+            android:label="Lista de Motoristas"
+            android:parentActivityName=".activitys.UsuariosActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

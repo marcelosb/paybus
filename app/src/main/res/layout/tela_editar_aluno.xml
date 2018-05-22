@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campoNomeCompletoAlunoOuCobradorEditar"
+        android:id="@+id/campoNomeAlunoEditar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -47,7 +47,7 @@
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoAlunoOuCobradorEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNomeAlunoEditar" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -68,7 +68,7 @@
         app:srcCompat="@drawable/icone_cpf" />
 
     <EditText
-        android:id="@+id/campoCPFAlunoOuCobradorEditar"
+        android:id="@+id/campoCPFAlunoEditar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -92,7 +92,7 @@
         app:srcCompat="@drawable/icone_celular" />
 
     <EditText
-        android:id="@+id/campoTelefoneAlunoOuCobradorEditar"
+        android:id="@+id/campoTelefoneAlunoEditar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAlunoOuCobradorEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAlunoEditar" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -116,7 +116,7 @@
         app:srcCompat="@drawable/icone_endereco" />
 
     <EditText
-        android:id="@+id/campoEnderecoAlunoOuCobradorEditar"
+        android:id="@+id/campoEnderecoAlunoEditar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -128,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/campoCPFAlunoOuCobradorEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFAlunoEditar" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -137,22 +137,22 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@drawable/icone_senha" />
+        app:srcCompat="@drawable/icone_email" />
 
     <EditText
-        android:id="@+id/campoSenhaAlunoOuCobradorEditar"
+        android:id="@+id/campoEmailAlunoEditar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAlunoOuCobradorEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAlunoEditar" />
 
     <Button
         android:id="@+id/botaoEditarAlunoOuCobrador"
@@ -167,5 +167,5 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoSenhaAlunoOuCobradorEditar" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEmailAlunoEditar" />
 </android.support.constraint.ConstraintLayout>

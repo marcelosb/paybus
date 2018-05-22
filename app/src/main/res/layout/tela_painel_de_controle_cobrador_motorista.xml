@@ -8,7 +8,7 @@
     >
 
     <ImageButton
-        android:id="@+id/botaoAlunos"
+        android:id="@+id/botaoUsuarios"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginLeft="30dp"
@@ -17,19 +17,6 @@
         android:background="@drawable/alunos_cobradores"
         android:onClick="irParaTelaListaDeAlunos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/botaoMotorista"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/motorista"
-        android:onClick="irParaTelaDadosDoMotorista"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -56,20 +43,7 @@
         android:background="@drawable/pagamentos"
         android:onClick="irParaTelaReceberPagamentos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoMotorista" />
-
-    <ImageButton
-        android:id="@+id/botaoNovoUsuario"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/admin_novo_usuario"
-        android:onClick="irParaTelaNovoUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoInadimplentes" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/botaoRelatorios"
@@ -93,19 +67,7 @@
         android:gravity="center"
         android:text="Alunos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoAlunos" />
-
-    <TextView
-        android:id="@+id/textoMotorista"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:text="Motorista"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoMotorista" />
+        app:layout_constraintTop_toBottomOf="@+id/botaoUsuarios" />
 
     <TextView
         android:id="@+id/textoInadimplentes"
@@ -130,24 +92,13 @@
         app:layout_constraintTop_toBottomOf="@+id/botaoReceberPagamentos" />
 
     <TextView
-        android:id="@+id/textoNovoUsuario"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:gravity="center"
-        android:text="Novo Usuário"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoNovoUsuario" />
-
-    <TextView
         android:id="@+id/textoRelatorios"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"
-        android:text="Relatórios"
+        android:text="Estatísticas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botaoRelatorios" />
 

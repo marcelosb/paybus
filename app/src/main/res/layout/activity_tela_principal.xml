@@ -36,7 +36,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="CPF"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"

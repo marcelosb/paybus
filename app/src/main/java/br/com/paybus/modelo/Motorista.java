@@ -10,6 +10,7 @@ public class Motorista {
     private String telefone;
     private String senha;
     private String tipoDeUsuario;
+    private String email;
 
     public Motorista() {
     }
@@ -72,6 +73,14 @@ public class Motorista {
 
     public String getTipoDeUsuario() {
         return tipoDeUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setTipoDeUsuario(String tipoDeUsuario) {

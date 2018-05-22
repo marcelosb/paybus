@@ -7,24 +7,24 @@ import android.view.View;
 
 import br.com.paybus.R;
 
-public class CadastrarUsuariosActivity extends AppCompatActivity {
+public class UsuariosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastrar_usuarios);
+        setContentView(R.layout.tela_usuarios);
     }
 
     public void irParaCadastroDeMotorista(View view){
-        startActivity(new Intent(CadastrarUsuariosActivity.this, CadastrarMotoristaActivity.class));
+        startActivity(new Intent(UsuariosActivity.this, ListaDeMotoristasActivity.class));
     }
 
     public void irParaCadastroDeCobrador(View view){
-        startActivity(new Intent(CadastrarUsuariosActivity.this, CadastrarCobradorActivity.class));
+        startActivity(new Intent(UsuariosActivity.this, ListaDeCobradoresActivity.class));
     }
 
     public void irParaCadastroDeAluno(View view){
-        startActivity(new Intent(CadastrarUsuariosActivity.this, CadastrarAlunoActivity.class));
+        startActivity(new Intent(UsuariosActivity.this, ListaDeAlunosActivity.class));
     }
 
 }

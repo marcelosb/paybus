@@ -6,12 +6,12 @@ import android.view.MenuItem;
 
 import br.com.paybus.R;
 
-public class RelatoriosActivity extends AppCompatActivity {
+public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_relatorios);
+        setContentView(R.layout.tela_alterar_senha);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

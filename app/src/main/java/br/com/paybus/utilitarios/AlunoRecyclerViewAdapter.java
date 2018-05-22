@@ -1,34 +1,25 @@
 package br.com.paybus.utilitarios;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.paybus.R;
-import br.com.paybus.activitys.CadastrarAlunoActivity;
 import br.com.paybus.activitys.EditarAlunoActivity;
 import br.com.paybus.activitys.ListaDeAlunosActivity;
-import br.com.paybus.activitys.PainelDeControleActivity;
-import br.com.paybus.activitys.RelatoriosActivity;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.modelo.Aluno;
-import br.com.paybus.modelo.RelatorioMensal;
 
 
 public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecyclerViewAdapter.ViewHolderAluno>   {
@@ -91,7 +82,7 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                 intent.putExtra("cpf_aluno", listaDeAlunos.get(position).getCpf());
                                 intent.putExtra("endereco_aluno", listaDeAlunos.get(position).getEndereco());
                                 intent.putExtra("telefone_aluno", listaDeAlunos.get(position).getTelefone());
-                                intent.putExtra("senha_aluno", listaDeAlunos.get(position).getSenha());
+                                intent.putExtra("email_aluno", listaDeAlunos.get(position).getEmail());
                                 context.startActivity(intent);
 
                                 break;

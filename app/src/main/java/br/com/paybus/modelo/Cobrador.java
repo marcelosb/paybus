@@ -10,7 +10,7 @@ public class Cobrador {
     private String telefone;
     private String senha;
     private String tipoDeUsuario;
-
+    private String email;
 
     public Cobrador() {
     }
@@ -73,6 +73,14 @@ public class Cobrador {
 
     public String getTipoDeUsuario() {
         return tipoDeUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setTipoDeUsuario(String tipoDeUsuario) {

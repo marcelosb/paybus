@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_receber_pagamentos);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#7a937a")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         alunoDAO = new AlunoDAO(ReceberPagamentosActivity.this);
         List<Aluno> listaDeAlunos = alunoDAO.listarAlunos();
@@ -65,6 +67,17 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                //NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void botaoRealizarPagamento(View view){
         AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentosActivity.this);

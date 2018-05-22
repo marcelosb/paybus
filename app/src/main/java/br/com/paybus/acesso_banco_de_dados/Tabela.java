@@ -15,7 +15,8 @@ public class Tabela {
                 Coluna.ENDERECO+" TEXT, "+
                 Coluna.TELEFONE+" TEXT, "+
                 Coluna.SENHA+" TEXT, "+
-                Coluna.TIPO_DE_USUARIO+" TEXT);";
+                Coluna.TIPO_DE_USUARIO+" TEXT, "+
+                Coluna.EMAIL+" TEXT);";
     }
 
     public static String cobrador(){
@@ -27,7 +28,8 @@ public class Tabela {
                 Coluna.ENDERECO+" TEXT, "+
                 Coluna.TELEFONE+" TEXT, "+
                 Coluna.SENHA+" TEXT, "+
-                Coluna.TIPO_DE_USUARIO+" TEXT);";
+                Coluna.TIPO_DE_USUARIO+" TEXT, "+
+                Coluna.EMAIL+" TEXT);";
     }
 
     public static String motorista(){
@@ -39,7 +41,8 @@ public class Tabela {
                 Coluna.CNH_MOTORISTA+" TEXT NOT NULL, "+
                 Coluna.TELEFONE+" TEXT, "+
                 Coluna.SENHA+" TEXT, "+
-                Coluna.TIPO_DE_USUARIO+" TEXT);";
+                Coluna.TIPO_DE_USUARIO+" TEXT, "+
+                Coluna.EMAIL+" TEXT);";
     }
 
 

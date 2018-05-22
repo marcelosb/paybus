@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import br.com.paybus.R;
 
-public class MotoristaActivity extends AppCompatActivity {
+public class ListaDeCobradoresActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_dados_do_motorista);
+        setContentView(R.layout.tela_lista_de_cobradores);
     }
 }

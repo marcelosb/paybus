@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,6 +74,17 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                //NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void filtro(String text){
         ArrayList<Aluno> novaLista = new ArrayList<>();
         for(Aluno aluno: listaAlunos){
@@ -87,7 +100,6 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
         listaAlunos = new ArrayList<Aluno>();
         dao = new AlunoDAO(this);
         listaAlunos = dao.listarAlunos();
-        fab = findViewById(R.id.fab);
         listaDeAlunosrecyclerView = findViewById(R.id.alunoRecyclerView);
         listaDeAlunosrecyclerView.setHasFixedSize(true);
         listaDeAlunosrecyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -13,7 +13,7 @@ import br.com.paybus.modelo.*;
 public class ConexaoBD extends SQLiteOpenHelper{
 
     private static final String BANCO_DE_DADOS = "bd_paybus";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 2;
 
     public ConexaoBD(Context context) {
         super(context, BANCO_DE_DADOS,null, VERSAO);
