@@ -17,7 +17,7 @@
         tools:context=".activitys.CadastrarMotoristaActivity">
 
         <EditText
-            android:id="@+id/campoNomeMotorista"
+            android:id="@+id/campoNomeMotoristaEditar"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/campoCPFUsuario"
+            android:id="@+id/campoCPFMotoristaEditar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -46,10 +46,10 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeCPF"
-            app:layout_constraintTop_toBottomOf="@+id/campoNomeMotorista" />
+            app:layout_constraintTop_toBottomOf="@+id/campoNomeMotoristaEditar" />
 
         <EditText
-            android:id="@+id/campoCelularUsuario"
+            android:id="@+id/campoCelularMotoristaEditar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -62,10 +62,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeCelular"
-            app:layout_constraintTop_toBottomOf="@+id/campoCNH" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCNHMotoristaEditar" />
 
         <EditText
-            android:id="@+id/campoEnderecoUsuario"
+            android:id="@+id/campoEnderecoMotoristaEditar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -78,10 +78,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeEndereco"
-            app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCPFMotoristaEditar" />
 
         <EditText
-            android:id="@+id/campoEmailMotorista"
+            android:id="@+id/campoEmailMotoristaEditar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -93,10 +93,10 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeSenha"
-            app:layout_constraintTop_toBottomOf="@+id/campoCelularUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCelularMotoristaEditar" />
 
         <EditText
-            android:id="@+id/campoCNH"
+            android:id="@+id/campoCNHMotoristaEditar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -110,22 +110,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeCNH"
-            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoMotoristaEditar" />
 
         <Button
-            android:id="@+id/botaoCadastrarUsuario"
+            android:id="@+id/botaoEditarMotorista"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginTop="30dp"
             android:background="#db9c1d"
             android:clickable="true"
-            android:text="CADASTRAR"
+            android:text="EDITAR"
             android:textColor="@android:color/background_light"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/campoEmailMotorista" />
+            app:layout_constraintTop_toBottomOf="@+id/campoEmailMotoristaEditar" />
 
 
         <ImageView

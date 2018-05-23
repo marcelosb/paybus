@@ -79,18 +79,27 @@
             android:name=".activitys.PainelDeControleAdminActivity"
             android:label="Painel de Controle Administrador"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activitys.ListaDeCobradoresActivity"
             android:label="Lista de Cobradores"
             android:parentActivityName=".activitys.UsuariosActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.ListaDeMotoristasActivity"
             android:label="Lista de Motoristas"
             android:parentActivityName=".activitys.UsuariosActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.EditarMotoristaActivity"
+            android:label="Editar Motorista"
+            android:parentActivityName=".activitys.ListaDeMotoristasActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.EditarCobradorActivity"
+            android:label="Editar Cobrador"
+            android:parentActivityName=".activitys.ListaDeMotoristasActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
