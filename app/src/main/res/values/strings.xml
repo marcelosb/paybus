@@ -54,6 +54,19 @@
         <item>2028</item>
         <item>2029</item>
     </string-array>
+
+
+    <string-array name="selecionar_cobrador">
+        <item>Selecione o Cobrador</item>
+        <item>Isabela Ferreira Andrade</item>
+    </string-array>
+
+    <string-array name="selecionar_motorista">
+        <item>Selecione o Motorista</item>
+        <item>José Anchieta Gomes</item>
+    </string-array>
+
+
     <string name="title_activity_editar_aluno">Editar Aluno</string>
 
 

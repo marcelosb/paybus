@@ -31,16 +31,10 @@ import br.com.paybus.utilitarios.AlunoRecyclerViewAdapter;
 
 public class ListaDeAlunosActivity extends AppCompatActivity{
 
-    private AppCompatActivity activity = ListaDeAlunosActivity.this;
-    Context context = ListaDeAlunosActivity.this;
     public List<Aluno> listaAlunos;
-
     private AlunoRecyclerViewAdapter alunoRecyclerViewAdapter;
     private RecyclerView listaDeAlunosrecyclerView;
-    private FloatingActionButton fab;
-    private ConstraintLayout constraintLayout;
-
-    AlunoDAO dao;
+    public AlunoDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +46,16 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#006666")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        criarRecyclerView();
+        criarRecyclerViewAluno();
 
         EditText campoBuscarAluno = findViewById(R.id.campoBuscar);
         campoBuscarAluno.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 filtro(s.toString());
@@ -78,7 +68,7 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                ListaDeAlunosActivity.this.finish();
                 //NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
@@ -96,7 +86,7 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
     }
 
 
-    private void criarRecyclerView() {
+    private void criarRecyclerViewAluno() {
         listaAlunos = new ArrayList<Aluno>();
         dao = new AlunoDAO(this);
         listaAlunos = dao.listarAlunos();
@@ -109,10 +99,9 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
     }
 
     public void irParaCadastrarAluno(View view){
+        ListaDeAlunosActivity.this.finish();
         startActivity(new Intent(ListaDeAlunosActivity.this, CadastrarAlunoActivity.class));
     }
-
-
 
 
 

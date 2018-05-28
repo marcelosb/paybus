@@ -8,7 +8,6 @@ public class Verifica {
 
     PainelDeDialogo painelDeDialogo;
 
-
     public boolean login(String cpf, String senha, Context contexto){
         painelDeDialogo = new PainelDeDialogo();
 
@@ -26,4 +25,64 @@ public class Verifica {
         }
 
     }
+
+
+    public boolean aluno(String nome, String instituicao, Context contexto){
+        painelDeDialogo = new PainelDeDialogo();
+
+        if(nome.isEmpty() && instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campos em branco!", "Por favor, insira seu Nome e selecione sua instituição de ensino.",contexto);
+            return false;
+        } else if(nome.isEmpty()){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, insira seu Nome", contexto);
+            return false;
+        }else if(instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, selecione sua instituição de ensino", contexto);
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+
+    public boolean cobrador(String nome, String instituicao, Context contexto){
+        painelDeDialogo = new PainelDeDialogo();
+
+        if(nome.isEmpty() && instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campos em branco!", "Por favor, insira seu Nome e selecione sua instituição de ensino.",contexto);
+            return false;
+        } else if(nome.isEmpty()){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, insira seu Nome", contexto);
+            return false;
+        }else if(instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, selecione sua instituição de ensino", contexto);
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+    public boolean motorista(String nome, String instituicao, Context contexto){
+        painelDeDialogo = new PainelDeDialogo();
+
+        if(nome.isEmpty() && instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campos em branco!", "Por favor, insira seu Nome e selecione sua instituição de ensino.",contexto);
+            return false;
+        } else if(nome.isEmpty()){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, insira seu Nome", contexto);
+            return false;
+        }else if(instituicao.equals("Selecione a Instituição")){
+            painelDeDialogo.mostrarMensagemDeErro("Campo em branco", "Por favor, selecione sua instituição de ensino", contexto);
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
 }

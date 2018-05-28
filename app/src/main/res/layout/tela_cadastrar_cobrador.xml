@@ -8,7 +8,6 @@
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
     android:layout_marginTop="30dp"
-    android:clickable="true"
     tools:context=".activitys.CadastrarCobradorActivity">
 
 
@@ -17,14 +16,13 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
-        android:clickable="true"
         android:longClickable="true"
         android:src="@drawable/icone_aluno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campoNomeCompletoAlunoOuCobrador"
+        android:id="@+id/campoNomeCompletoCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -38,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/comboBoxSelecionarInstituicao"
+        android:id="@+id/comboBoxSelecionarInstituicaoCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="42dp"
@@ -48,7 +46,7 @@
         android:entries="@array/selecionar_instituicao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoCobrador" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -69,7 +67,7 @@
         app:srcCompat="@drawable/icone_cpf" />
 
     <EditText
-        android:id="@+id/campoCPFAlunoOuCobrador"
+        android:id="@+id/campoCPFCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -81,7 +79,7 @@
         android:maxLength="11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/comboBoxSelecionarInstituicao" />
+        app:layout_constraintTop_toBottomOf="@+id/comboBoxSelecionarInstituicaoCobrador" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -93,7 +91,7 @@
         app:srcCompat="@drawable/icone_celular" />
 
     <EditText
-        android:id="@+id/campoTelefoneAlunoOuCobrador"
+        android:id="@+id/campoTelefoneCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -105,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoCobrador" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -117,7 +115,7 @@
         app:srcCompat="@drawable/icone_endereco" />
 
     <EditText
-        android:id="@+id/campoEnderecoAlunoOuCobrador"
+        android:id="@+id/campoEnderecoCobrador"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -129,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/campoCPFAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFCobrador" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -141,12 +139,12 @@
         app:srcCompat="@drawable/icone_email" />
 
     <Button
-        android:id="@+id/botaoCadastrarAlunoOuCobrador"
+        android:id="@+id/botaoCadastrarCobrador"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="30dp"
         android:background="#31a9b8"
-        android:onClick="cadastrarAlunoOuCobrador"
+        android:onClick="cadastrarCobrador"
         android:text="CADASTRAR"
         android:textAllCaps="false"
         android:textColor="@color/branco"
@@ -168,5 +166,5 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneCobrador" />
 </android.support.constraint.ConstraintLayout>

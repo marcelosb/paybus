@@ -6,10 +6,21 @@ public class Pagamentos {
     private String dataDoPagamento;
     private Double valorDoPagamento;
     private String status;
-    private Aluno aluno;
-    private Cobrador cobrador;
-    private Motorista motorista;
+    private String aluno;
+    private String cobrador;
+    private String motorista;
     private String observacao;
+
+    public Pagamentos(String dataDoVencimento, String dataDoPagamento, Double valorDoPagamento, String status, String aluno, String cobrador, String motorista, String observacao) {
+        this.dataDoVencimento = dataDoVencimento;
+        this.dataDoPagamento = dataDoPagamento;
+        this.valorDoPagamento = valorDoPagamento;
+        this.status = status;
+        this.aluno = aluno;
+        this.cobrador = cobrador;
+        this.motorista = motorista;
+        this.observacao = observacao;
+    }
 
     public Integer getId() {
         return id;
@@ -51,35 +62,35 @@ public class Pagamentos {
         this.status = status;
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Cobrador getCobrador() {
-        return cobrador;
-    }
-
-    public void setCobrador(Cobrador cobrador) {
-        this.cobrador = cobrador;
-    }
-
-    public Motorista getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
-    }
-
     public String getObservacao() {
         return observacao;
     }
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public String getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(String aluno) {
+        this.aluno = aluno;
+    }
+
+    public String getCobrador() {
+        return cobrador;
+    }
+
+    public void setCobrador(String cobrador) {
+        this.cobrador = cobrador;
+    }
+
+    public String getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(String motorista) {
+        this.motorista = motorista;
     }
 }

@@ -14,7 +14,7 @@
         android:id="@+id/imageButton3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/cad_usuarios_motorista"
+        android:background="@drawable/usuarios_motoristas"
         android:onClick="irParaCadastroDeMotorista"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/cad_usuarios_alunos"
+        android:background="@drawable/usuario_aluno"
         android:onClick="irParaCadastroDeAluno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
@@ -34,7 +34,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/cad_usuarios_cobrador"
+        android:background="@drawable/usuarios_cobradores"
         android:onClick="irParaCadastroDeCobrador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />

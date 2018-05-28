@@ -8,15 +8,13 @@
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
     android:layout_marginTop="30dp"
-    android:clickable="true"
-    tools:context=".activitys.CadastrarCobradorActivity">
+    tools:context=".activitys.EditarCobradorActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
-        android:clickable="true"
         android:longClickable="true"
         android:src="@drawable/icone_aluno"
         app:layout_constraintStart_toStartOf="parent"
@@ -149,6 +147,7 @@
         android:textAllCaps="false"
         android:textColor="@color/branco"
         android:textSize="15sp"
+        android:onClick="editarCobrador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

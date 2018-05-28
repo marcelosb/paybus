@@ -31,6 +31,7 @@ public class PainelDeDialogo extends Activity{
 
             }
         });
+        caixaDeDialogo.create();
         caixaDeDialogo.show();
     }
 

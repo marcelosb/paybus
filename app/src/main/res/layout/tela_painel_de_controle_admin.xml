@@ -9,20 +9,20 @@
 
     <ImageButton
         android:id="@+id/botaoUsuarios"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/admin_novo_usuario"
         android:onClick="irParaTelaUsuarios"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textoNomeAdminLogado" />
 
     <ImageButton
         android:id="@+id/botaoInadimplentes"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
@@ -34,21 +34,21 @@
 
     <ImageButton
         android:id="@+id/botaoReceberPagamentos"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/pagamentos"
         android:onClick="irParaTelaReceberPagamentos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textoNomeAdminLogado" />
 
     <ImageButton
         android:id="@+id/botaoRelatorios"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
@@ -60,7 +60,7 @@
 
     <TextView
         android:id="@+id/textoAlunos"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
@@ -71,7 +71,7 @@
 
     <TextView
         android:id="@+id/textoInadimplentes"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
@@ -82,7 +82,7 @@
 
     <TextView
         android:id="@+id/textoPagamentos"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
@@ -93,7 +93,7 @@
 
     <TextView
         android:id="@+id/textoRelatorios"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
@@ -104,8 +104,8 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
@@ -115,7 +115,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="130dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
@@ -123,6 +123,18 @@
         android:text="Financeiro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+
+    <TextView
+        android:id="@+id/textoNomeAdminLogado"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

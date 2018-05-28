@@ -23,9 +23,6 @@ public class AlunoControl extends CadastrarAlunoActivity{
     }
 
     public void cadastrarAluno(Context context){
-        EditText editText = findViewById(R.id.campoSenha);
-
-
 
     }
 

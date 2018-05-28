@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/icone_senha" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/campoSenhaAtual"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -34,7 +34,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:enabled="true"
         android:hint="Senha Atual"
         android:inputType="textPassword"
         android:textSize="20sp"
@@ -43,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/campoNovaSenha"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,15 +51,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:enabled="true"
         android:hint="Nova Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/campoSenhaAtual" />
 
     <EditText
-        android:id="@+id/testere"
+        android:id="@+id/campoConfirmarNovaSenha"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -69,12 +67,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:enabled="true"
         android:hint="Confirmar Nova Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNovaSenha" />
 
     <Button
         android:id="@+id/button2"
@@ -85,9 +82,10 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
+        android:onClick="alterarSenhaDoUsuario"
         android:text="ALTERAR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testere" />
+        app:layout_constraintTop_toBottomOf="@+id/campoConfirmarNovaSenha" />
 
 </android.support.constraint.ConstraintLayout>

@@ -9,7 +9,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/campoCPFUsuario"
+            android:id="@+id/campoCPFMotorista"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/campoNomeMotorista" />
 
         <EditText
-            android:id="@+id/campoCelularUsuario"
+            android:id="@+id/campoTelefoneMotorista"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/campoCNH" />
 
         <EditText
-            android:id="@+id/campoEnderecoUsuario"
+            android:id="@+id/campoEnderecoMotorista"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -78,7 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeEndereco"
-            app:layout_constraintTop_toBottomOf="@+id/campoCPFUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoCPFMotorista" />
 
         <EditText
             android:id="@+id/campoEmailMotorista"
@@ -93,7 +93,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iconeSenha"
-            app:layout_constraintTop_toBottomOf="@+id/campoCelularUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoTelefoneMotorista" />
 
         <EditText
             android:id="@+id/campoCNH"
@@ -110,15 +110,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeCNH"
-            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/campoEnderecoMotorista" />
 
         <Button
-            android:id="@+id/botaoCadastrarUsuario"
+            android:id="@+id/botaoCadastrarMotorista"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginTop="30dp"
             android:background="#db9c1d"
-            android:clickable="true"
+            android:onClick="cadastrarMotorista"
             android:text="CADASTRAR"
             android:textColor="@android:color/background_light"
             android:visibility="visible"

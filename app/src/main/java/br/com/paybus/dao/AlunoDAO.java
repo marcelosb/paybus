@@ -105,11 +105,12 @@ public class AlunoDAO {
         return listaDeAlunos;
     }
 
-    public Aluno lerAluno(int id){
+    public boolean fazerLogin(String campoEmail, String campoSenha){
         Aluno aluno = null;
         try {
-            String queryListaAluno = "SELECT * FROM "+Tabela.ALUNO+ " WHERE " +Coluna.ID+"=" + String.valueOf(id) + " LIMIT 1";
-            Cursor cursor = db.rawQuery(queryListaAluno, null);
+            Cursor cursor = db.rawQuery( "SELECT * FROM "+Tabela.ALUNO +" WHERE email = ? AND senha = ? ", new String[]{campoEmail, campoSenha});
+            //String queryListaAluno = "SELECT * FROM "+Tabela.ALUNO+ " WHERE " +Coluna.EMAIL+"=" + email +" AND "+Coluna.SENHA+"="+ senha + " LIMIT 1";
+            //Cursor cursor = db.rawQuery(queryListaAluno, null);
             if (cursor.moveToFirst()) {
                 aluno = new Aluno();
                 aluno.setId(Integer.parseInt(cursor.getString(0)));
@@ -121,13 +122,27 @@ public class AlunoDAO {
                 aluno.setSenha(cursor.getString(6));
                 aluno.setTipoDeUsuario(cursor.getString(7));
                 aluno.setEmail(cursor.getString(8));
+                return true;
             }
+
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             db.close();
         }
-        return aluno;
+        return false;
+    }
+
+    public void atualizarSenhaDoAluno(int id ,String senha){
+        ContentValues values = new ContentValues();
+        try{
+            values.put(Coluna.SENHA, senha);
+            db.update(Tabela.ALUNO, values,Coluna.ID + "= ? ",new String[]{ String.valueOf(id) });
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            db.close();
+        }
     }
 
 }

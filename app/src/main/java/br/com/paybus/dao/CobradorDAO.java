@@ -11,7 +11,6 @@ import java.util.List;
 import br.com.paybus.acesso_banco_de_dados.Coluna;
 import br.com.paybus.acesso_banco_de_dados.ConexaoBD;
 import br.com.paybus.acesso_banco_de_dados.Tabela;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Cobrador;
 
 public class CobradorDAO {
@@ -35,6 +34,7 @@ public class CobradorDAO {
             values.put(Coluna.TELEFONE, cobrador.getTelefone());
             values.put(Coluna.SENHA, cobrador.getSenha());
             values.put(Coluna.TIPO_DE_USUARIO, cobrador.getTipoDeUsuario());
+            values.put(Coluna.EMAIL, cobrador.getEmail());
 
             db.insert(Tabela.COBRADOR,null, values);
         }catch(Exception e){
@@ -65,7 +65,7 @@ public class CobradorDAO {
             values.put(Coluna.CPF, cobrador.getCpf());
             values.put(Coluna.ENDERECO, cobrador.getEndereco());
             values.put(Coluna.TELEFONE, cobrador.getTelefone());
-            values.put(Coluna.SENHA, cobrador.getSenha());
+            values.put(Coluna.EMAIL, cobrador.getEmail());
 
             db.update(Tabela.COBRADOR, values,Coluna.ID + "= ?",new String[]{String.valueOf(cobrador.getId())});
         }catch(Exception e){
@@ -76,7 +76,7 @@ public class CobradorDAO {
 
     }
 
-    public List<Cobrador> listarCobrador(int id){
+    public List<Cobrador> listarCobradores(){
         List<Cobrador> listaDeCobradores = new ArrayList<Cobrador>();
         try {
             String queryListaCobradores = "SELECT * FROM "+Tabela.COBRADOR+";";
@@ -91,6 +91,8 @@ public class CobradorDAO {
                     cobrador.setEndereco(cursor.getString(4));
                     cobrador.setTelefone(cursor.getString(5));
                     cobrador.setSenha(cursor.getString(6));
+                    cobrador.setTipoDeUsuario(cursor.getString(7));
+                    cobrador.setEmail(cursor.getString(8));
 
                     listaDeCobradores.add(cobrador);
                 } while (cursor.moveToNext());
@@ -103,11 +105,15 @@ public class CobradorDAO {
         return listaDeCobradores;
     }
 
-    public Cobrador lerCobrador(int id){
+    public Cobrador lerCobrador(String  campoEmail, String campoSenha){
         Cobrador cobrador = null;
         try {
-            String queryListaCobradores = "SELECT * FROM "+Tabela.COBRADOR+ " WHERE " +Coluna.ID+"=" + String.valueOf(id) + " LIMIT 1";
-            Cursor cursor = db.rawQuery(queryListaCobradores, null);
+
+            Cursor cursor = db.query(Tabela.COBRADOR, new String[]{Coluna.EMAIL, Coluna.SENHA}, " email = ? AND senha = ?", new String[] { campoEmail,campoSenha  }, null, null, null, null);
+
+            //Cursor cursor = db_leitura.rawQuery(queryListaCobradores, null);
+            //String queryListaCobradores = "SELECT * FROM "+Tabela.COBRADOR+ " WHERE " +Coluna.ID+"=" + String.valueOf(id) + " LIMIT 1";
+            //Cursor cursor = db_leitura.rawQuery(queryListaCobradores, null);
             if (cursor.moveToFirst()) {
                 cobrador = new Cobrador();
                 cobrador.setId(Integer.parseInt(cursor.getString(0)));
@@ -124,6 +130,47 @@ public class CobradorDAO {
             db.close();
         }
         return cobrador;
+    }
+
+    public boolean fazerLogin(String campoEmail, String campoSenha ){
+        Cobrador cobrador = null;
+        try {
+            //Cursor cursor = db_leitura.query(Tabela.COBRADOR, new String[]{Coluna.EMAIL, Coluna.SENHA}, " email = ? AND senha = ?", new String[] { campoEmail,campoSenha  }, null, null, null, null);
+            Cursor cursor = db.rawQuery( "SELECT * FROM "+Tabela.COBRADOR +" WHERE "+ Coluna.EMAIL+"= ? AND " +Coluna.SENHA+"= ? ;", new String[]{campoEmail, campoSenha});
+            //String queryListaAluno = "SELECT * FROM "+Tabela.COBRADOR+ " WHERE " +Coluna.EMAIL+"=" + email +" AND "+Coluna.SENHA+"="+ senha + " LIMIT 1";
+            //Cursor cursor = db.rawQuery(queryListaAluno, null);
+            if (cursor.moveToFirst()) {
+                cobrador = new Cobrador();
+                cobrador.setId(Integer.parseInt(cursor.getString(0)));
+                cobrador.setNomeCompleto(cursor.getString(1));
+                cobrador.setInstituicao(cursor.getString(2));
+                cobrador.setCpf(cursor.getString(3));
+                cobrador.setEndereco(cursor.getString(4));
+                cobrador.setTelefone(cursor.getString(5));
+                cobrador.setSenha(cursor.getString(6));
+                cobrador.setTipoDeUsuario(cursor.getString(7));
+                cobrador.setEmail(cursor.getString(8));
+                return true;
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            db.close();
+        }
+        return false;
+    }
+
+    public void atualizarSenhaDoCobrador(int id ,String senha){
+        ContentValues values = new ContentValues();
+        try{
+            values.put(Coluna.SENHA, senha);
+            db.update(Tabela.COBRADOR, values,Coluna.ID + "= ? ",new String[]{ String.valueOf(id) });
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            db.close();
+        }
     }
 
 }

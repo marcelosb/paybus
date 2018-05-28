@@ -8,23 +8,20 @@
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
     android:layout_marginTop="30dp"
-    android:clickable="true"
     tools:context=".activitys.CadastrarAlunoActivity">
-
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
-        android:clickable="true"
         android:longClickable="true"
         android:src="@drawable/icone_aluno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campoNomeCompletoAlunoOuCobrador"
+        android:id="@+id/campoNomeCompletoAluno"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -39,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/comboBoxSelecionarInstituicao"
+        android:id="@+id/comboBoxSelecionarInstituicaoAluno"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="42dp"
@@ -49,7 +46,7 @@
         android:entries="@array/selecionar_instituicao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoNomeCompletoAluno" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -70,7 +67,7 @@
         app:srcCompat="@drawable/icone_cpf" />
 
     <EditText
-        android:id="@+id/campoCPFAlunoOuCobrador"
+        android:id="@+id/campoCPFAluno"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -82,7 +79,7 @@
         android:maxLength="11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/comboBoxSelecionarInstituicao" />
+        app:layout_constraintTop_toBottomOf="@+id/comboBoxSelecionarInstituicaoAluno" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -94,7 +91,7 @@
         app:srcCompat="@drawable/icone_celular" />
 
     <EditText
-        android:id="@+id/campoTelefoneAlunoOuCobrador"
+        android:id="@+id/campoTelefoneAluno"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -106,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoEnderecoAluno" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -118,7 +115,7 @@
         app:srcCompat="@drawable/icone_endereco" />
 
     <EditText
-        android:id="@+id/campoEnderecoAlunoOuCobrador"
+        android:id="@+id/campoEnderecoAluno"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -130,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/campoCPFAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoCPFAluno" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -154,15 +151,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAlunoOuCobrador" />
+        app:layout_constraintTop_toBottomOf="@+id/campoTelefoneAluno" />
 
     <Button
-        android:id="@+id/botaoCadastrarAlunoOuCobrador"
+        android:id="@+id/botaoCadastrarAluno"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
-        android:onClick="cadastrarAlunoOuCobrador"
+        android:onClick="cadastrarAluno"
         android:text="CADASTRAR"
         android:textAllCaps="false"
         android:textColor="@color/branco"

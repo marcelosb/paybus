@@ -1,10 +1,13 @@
 package br.com.paybus.utilitarios;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -44,14 +47,16 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
 
     public class ViewHolderAluno extends RecyclerView.ViewHolder{
 
-        public TextView textoNome;
-        public TextView textoInstituicao;
+        public TextView textoNomeAluno;
+        public TextView textoInstituicaoAluno;
+        public TextView textoMenuNever;
 
         public ViewHolderAluno(View itemView) {
             super(itemView);
 
-            textoNome = itemView.findViewById(R.id.textoNome);
-            textoInstituicao = itemView.findViewById(R.id.textoInstituicao);
+            textoNomeAluno = itemView.findViewById(R.id.textoNomeAluno);
+            textoInstituicaoAluno = itemView.findViewById(R.id.textoInstituicaoAluno);
+            textoMenuNever = itemView.findViewById(R.id.textoMenuNever);
         }
     }
 
@@ -59,22 +64,20 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
 
     @Override
     public void onBindViewHolder(@NonNull final AlunoRecyclerViewAdapter.ViewHolderAluno holder, final int position) {
-        holder.textoNome.setText(listaDeAlunos.get(position).getNomeCompleto());
-        holder.textoInstituicao.setText(listaDeAlunos.get(position).getInstituicao());
+        holder.textoNomeAluno.setText(listaDeAlunos.get(position).getNomeCompleto());
+        holder.textoInstituicaoAluno.setText(listaDeAlunos.get(position).getInstituicao());
 
-        // aqui faz a parte do clique
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
+        holder.textoMenuNever.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick( View v) {
-                PopupMenu popupMenu = new PopupMenu(context, holder.textoNome);
-                popupMenu.inflate(R.menu.menu_popup_aluno);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public void onClick(View v) {
+                PopupMenu popupMenuNever = new PopupMenu(context, holder.textoMenuNever);
+                popupMenuNever.inflate(R.menu.menu_popup_aluno);
+                popupMenuNever.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
                         switch (item.getItemId()){
                             case R.id.popup_editar:
-
                                 Intent intent = new Intent(context, EditarAlunoActivity.class);
                                 intent.putExtra("id_aluno", listaDeAlunos.get(position).getId());
                                 intent.putExtra("nome_completo_aluno", listaDeAlunos.get(position).getNomeCompleto());
@@ -83,28 +86,98 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                 intent.putExtra("endereco_aluno", listaDeAlunos.get(position).getEndereco());
                                 intent.putExtra("telefone_aluno", listaDeAlunos.get(position).getTelefone());
                                 intent.putExtra("email_aluno", listaDeAlunos.get(position).getEmail());
+
+                                ((ListaDeAlunosActivity) context).finish();
                                 context.startActivity(intent);
 
-                                break;
-                            case R.id.popup_deletar:
 
+                                break;
+
+                            case R.id.popup_deletar:
                                 AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
                                 caixaDeDialogo.setCancelable(false);
                                 caixaDeDialogo.setTitle("Confirmar");
                                 caixaDeDialogo.setMessage("Deseja realmente excluir "+listaDeAlunos.get(position).getNomeCompleto()+
-                                        "? Que Estuda na "+listaDeAlunos.get(position).getInstituicao()+"?");
-
+                                        "? Que Estuda no(a) "+listaDeAlunos.get(position).getInstituicao()+"?");
                                 caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.cancel();
                                     }
                                 });
-
                                 caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                                         AlunoDAO dao = new AlunoDAO(context);
                                         dao.deletarAluno(listaDeAlunos.get(position));
+
+                                        ((ListaDeAlunosActivity) context).finish();
                                         context.startActivity(new Intent(context, ListaDeAlunosActivity.class));
+
+                                    }
+                                });
+
+                                caixaDeDialogo.create();
+                                caixaDeDialogo.show();
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+                popupMenuNever.show();
+
+            }
+
+        });
+
+
+        // aqui faz a parte do clique
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick( View v) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.textoNomeAluno);
+                popupMenu.inflate(R.menu.menu_popup_aluno);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        switch (item.getItemId()){
+                            case R.id.popup_editar:
+                                Intent intent = new Intent(context, EditarAlunoActivity.class);
+                                intent.putExtra("id_aluno", listaDeAlunos.get(position).getId());
+                                intent.putExtra("nome_completo_aluno", listaDeAlunos.get(position).getNomeCompleto());
+                                intent.putExtra("instituicao_aluno", listaDeAlunos.get(position).getInstituicao());
+                                intent.putExtra("cpf_aluno", listaDeAlunos.get(position).getCpf());
+                                intent.putExtra("endereco_aluno", listaDeAlunos.get(position).getEndereco());
+                                intent.putExtra("telefone_aluno", listaDeAlunos.get(position).getTelefone());
+                                intent.putExtra("email_aluno", listaDeAlunos.get(position).getEmail());
+
+                                ((ListaDeAlunosActivity) context).finish();
+                                context.startActivity(intent);
+
+                            break;
+
+                            case R.id.popup_deletar:
+                                AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
+                                caixaDeDialogo.setCancelable(false);
+                                caixaDeDialogo.setTitle("Confirmar");
+                                caixaDeDialogo.setMessage("Deseja realmente excluir "+listaDeAlunos.get(position).getNomeCompleto()+
+                                        "? Que Estuda na "+listaDeAlunos.get(position).getInstituicao()+"?");
+                                caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.cancel();
+                                    }
+                                });
+                                caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                        AlunoDAO dao = new AlunoDAO(context);
+                                        dao.deletarAluno(listaDeAlunos.get(position));
+
+                                        ((ListaDeAlunosActivity) context).finish();
+                                        context.startActivity(new Intent(context, ListaDeAlunosActivity.class));
+
                                         /**
                                         notifyItemRemoved(position);
                                         List<Aluno> listaAlunos = dao.listarAlunos();
@@ -115,9 +188,8 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
 
                                 caixaDeDialogo.create();
                                 caixaDeDialogo.show();
-
-
                                 break;
+
                              default:
                                  break;
                         }
@@ -126,7 +198,6 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                     }
                 });
                 popupMenu.show();
-
                 return true;
             }
 

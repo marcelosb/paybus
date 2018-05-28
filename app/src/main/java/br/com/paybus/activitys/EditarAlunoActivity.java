@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -32,6 +33,7 @@ public class EditarAlunoActivity extends AppCompatActivity {
         setContentView(R.layout.tela_editar_aluno);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFF8800")));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         id = getIntent().getIntExtra("id_aluno", -1);
 
@@ -67,7 +69,17 @@ public class EditarAlunoActivity extends AppCompatActivity {
 
     }
 
-    public void editarAlunoOuCobrador(View view){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void editarAluno(View view){
 
         EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeAlunoEditar);
         Spinner comboBoxSelecionarInstituicao = findViewById(R.id.comboBoxSelecionarInstituicaoEditar);
@@ -94,6 +106,7 @@ public class EditarAlunoActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Alteração realizada com sucesso!");
         caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
                 startActivity(new Intent(EditarAlunoActivity.this, ListaDeAlunosActivity.class));
             }
         });
