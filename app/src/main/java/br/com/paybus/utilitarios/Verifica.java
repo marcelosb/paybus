@@ -2,7 +2,6 @@ package br.com.paybus.utilitarios;
 
 import android.content.Context;
 
-import br.com.paybus.activitys.TelaPrincipalActivity;
 
 public class Verifica {
 

@@ -1,19 +1,13 @@
 package br.com.paybus.utilitarios;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
 import br.com.paybus.R;
-import br.com.paybus.activitys.ListaDeAlunosActivity;
-import br.com.paybus.activitys.TelaPrincipalActivity;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.modelo.Aluno;
 

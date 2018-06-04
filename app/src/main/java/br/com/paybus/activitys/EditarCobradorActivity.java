@@ -13,11 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import br.com.paybus.R;
-import br.com.paybus.controle.AlunoControl;
 import br.com.paybus.controle.CobradorControl;
-import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.CobradorDAO;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Cobrador;
 import br.com.paybus.utilitarios.PainelDeDialogo;
 

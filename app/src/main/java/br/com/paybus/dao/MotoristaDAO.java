@@ -11,8 +11,6 @@ import java.util.List;
 import br.com.paybus.acesso_banco_de_dados.Coluna;
 import br.com.paybus.acesso_banco_de_dados.ConexaoBD;
 import br.com.paybus.acesso_banco_de_dados.Tabela;
-import br.com.paybus.modelo.Aluno;
-import br.com.paybus.modelo.Cobrador;
 import br.com.paybus.modelo.Motorista;
 
 public class MotoristaDAO {

@@ -11,8 +11,8 @@
         android:id="@+id/botaoUsuarios"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/alunos_cobradores"
         android:onClick="irParaTelaListaDeAlunos"
@@ -20,43 +20,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textoNomeCobradorOuMotoristaLogado" />
 
     <ImageButton
-        android:id="@+id/botaoInadimplentes"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/inadimplentes"
-        android:onClick="irParaTelaInadimplentes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoAlunos" />
-
-    <ImageButton
         android:id="@+id/botaoReceberPagamentos"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/pagamentos"
-        android:onClick="irParaTelaReceberPagamentos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoNomeCobradorOuMotoristaLogado" />
-
-    <ImageButton
-        android:id="@+id/botaoRelatorios"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/relatorios"
-        android:onClick="irParaTelaRelatorios"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pagamentos"
+        android:onClick="irParaTelaReceberPagamentos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoPagamentos" />
+        app:layout_constraintTop_toBottomOf="@+id/textoNomeCobradorOuMotoristaLogado" />
 
     <TextView
         android:id="@+id/textoAlunos"
@@ -70,17 +44,6 @@
         app:layout_constraintTop_toBottomOf="@+id/botaoUsuarios" />
 
     <TextView
-        android:id="@+id/textoInadimplentes"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:gravity="center"
-        android:text="Inadimplentes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoInadimplentes" />
-
-    <TextView
         android:id="@+id/textoPagamentos"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -90,17 +53,6 @@
         android:text="Pagamentos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botaoReceberPagamentos" />
-
-    <TextView
-        android:id="@+id/textoRelatorios"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:text="Estatísticas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoRelatorios" />
 
     <TextView
         android:id="@+id/textoNomeCobradorOuMotoristaLogado"

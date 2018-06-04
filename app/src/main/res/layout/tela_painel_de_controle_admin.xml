@@ -20,19 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textoNomeAdminLogado" />
 
     <ImageButton
-        android:id="@+id/botaoInadimplentes"
-        android:layout_width="120dp"
-        android:layout_height="115dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/inadimplentes"
-        android:onClick="irParaTelaInadimplentes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoAlunos" />
-
-    <ImageButton
         android:id="@+id/botaoReceberPagamentos"
         android:layout_width="120dp"
         android:layout_height="115dp"
@@ -70,17 +57,6 @@
         app:layout_constraintTop_toBottomOf="@+id/botaoUsuarios" />
 
     <TextView
-        android:id="@+id/textoInadimplentes"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:gravity="center"
-        android:text="Inadimplentes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoInadimplentes" />
-
-    <TextView
         android:id="@+id/textoPagamentos"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
@@ -98,7 +74,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"
-        android:text="Estatísticas"
+        android:text="Estatísticas Gerais"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botaoRelatorios" />
 
@@ -111,7 +87,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/admin_painel_de_controle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoInadimplentes" />
+        app:layout_constraintTop_toBottomOf="@+id/textoAlunos" />
 
     <TextView
         android:id="@+id/textView2"

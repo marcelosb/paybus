@@ -38,10 +38,6 @@
             android:label="Alterar Senha"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activitys.InadimplentesActivity"
-            android:label="Inadimplentes"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activitys.ReceberPagamentosActivity"
             android:label="Receber Pagamentos"
             android:screenOrientation="portrait" />
@@ -93,11 +89,32 @@
             android:name=".activitys.EditarCobradorActivity"
             android:label="Editar Cobrador"
             android:screenOrientation="portrait" />
+        <activity android:name=".activitys.ViewPDFActivity" />
         <activity
-            android:name=".activitys.ListaDePagamentosPorMesActivity"
-            android:label="Pagamentos por Mês"
+            android:name=".activitys.ListarPagamentos"
+            android:label="Lista de meses de pagamento"
             android:screenOrientation="portrait" />
-        <activity android:name=".activitys.ViewPDFActivity"></activity>
+        <activity
+            android:name=".activitys.CadastrarNovoMesDePagamento"
+            android:label="Novo mês de pagamento"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ListaDeAlunosPagamentos"
+            android:label="Pagamento do Mês"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ReceberPagamentoActivity"
+            android:label="Receber Pagamento"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.EditarNovoMesDePagamentoActivity"
+            android:label="Editar mês de pagamento"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.EstatisticaActivity"
+            android:label="Estatísticas do Mês"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

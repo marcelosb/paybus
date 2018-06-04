@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/popup_fazer_pagamento_aluno"
+        android:title="Fazer Pagamento" />
+
+    <item
+        android:id="@+id/popup_editar_pagamento_aluno"
+        android:icon="@drawable/icone_editar"
+        android:title="Editar"
+        android:visible="true"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/popup_deletar_pagamento_aluno"
+        android:title="Deletar" />
+
+
+</menu>

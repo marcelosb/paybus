@@ -6,23 +6,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +24,11 @@ import java.util.List;
 import br.com.paybus.R;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.modelo.Aluno;
-import br.com.paybus.modelo.Cobrador;
-import br.com.paybus.modelo.Motorista;
 import br.com.paybus.modelo.Pagamentos;
 import br.com.paybus.utilitarios.GerarPDFPagamento;
 
 
-
 public class ReceberPagamentosActivity extends AppCompatActivity {
-
 
 
     AlunoDAO alunoDAO;
@@ -51,8 +41,6 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
 
     //codigo para peido de permissao
     public static final int REQUEST_PERMISSIONS_CODE = 128;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +97,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         //iniciando a variavel gerar pdf
         gerarPDF = new GerarPDFPagamento(getApplicationContext());
         //inicinado o objeto pagamento
-        pagamento= new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
+        pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
 
         AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentosActivity.this);
         caixaDeDialogo.setCancelable(false);
@@ -117,7 +105,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Pagamento realizado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
         caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                chamarPermissaoGravacao(pagamento);
+                //chamarPermissaoGravacao(pagamento);
             }
         });
         caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -126,6 +114,11 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         });
         caixaDeDialogo.create();
         caixaDeDialogo.show();
+    }
+
+    public void adicionarNovoAluno(View view){
+        ReceberPagamentosActivity.this.finish();
+        startActivity(new Intent(ReceberPagamentosActivity.this, CadastrarAlunoActivity.class));
     }
 
 

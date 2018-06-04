@@ -19,32 +19,13 @@
 
     <AutoCompleteTextView
         android:id="@+id/campoNomeAutoCompletar"
-        android:layout_width="0dp"
+        android:layout_width="240dp"
         android:layout_height="50dp"
         android:drawableRight="@drawable/icone_busca"
         android:hint="Pesquisar pelo nome do aluno..."
         android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/comboBoxMesPagamento"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:entries="@array/selecionar_mes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoSelecionarInstituicaoPagamento" />
-
-    <Spinner
-        android:id="@+id/comboBoxAnoPagamento"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:entries="@array/selecionar_ano"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoSelecionarInstituicaoPagamento" />
 
     <EditText
         android:id="@+id/campoSelecionarInstituicaoPagamento"
@@ -106,7 +87,7 @@
         android:id="@+id/spinner3"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="15dp"
         android:entries="@array/selecionar_cobrador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,11 +97,23 @@
         android:id="@+id/spinner4"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:entries="@array/selecionar_motorista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
+        android:onClick="adicionarNovoAluno"
+        android:text="Add Novo Aluno"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/campoNomeAutoCompletar"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 

@@ -10,9 +10,11 @@ import android.widget.EditText;
 import java.util.List;
 
 import br.com.paybus.R;
+import br.com.paybus.dao.AdminDAO;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.dao.MotoristaDAO;
+import br.com.paybus.modelo.Administrador;
 import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Cobrador;
 import br.com.paybus.modelo.Motorista;
@@ -22,7 +24,11 @@ import br.com.paybus.utilitarios.Verifica;
 
 public class TelaPrincipalActivity extends AppCompatActivity {
 
+    public static String novoAlunoPagamento = "falso";
+
+    Administrador administrador;
     Verifica verifica;
+    AdminDAO adminDAO;
     AlunoDAO alunoDAO;
     CobradorDAO cobradorDAO;
     MotoristaDAO motoristaDAO;
@@ -45,8 +51,11 @@ public class TelaPrincipalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     public void irParaPainelDeControle(View view){
 
+        adminDAO = new AdminDAO(this);
         alunoDAO = new AlunoDAO(this);
         cobradorDAO = new CobradorDAO(this);
         motoristaDAO = new MotoristaDAO(this);
@@ -59,10 +68,20 @@ public class TelaPrincipalActivity extends AppCompatActivity {
 
         verifica = new Verifica();
         if(verifica.login(campoEmail, campoSenha, this)){
-            if((campoEmail.equals("admin") || campoEmail.equals("ADMIN")) && (campoSenha.equals("admin") || campoSenha.equals("123"))  ){
-                Usuario.nome = "Admin do sistema";
-                TelaPrincipalActivity.this.finish();
-                startActivity(new Intent(this, PainelDeControleAdminActivity.class));
+            if( adminDAO.fazerLogin(campoEmail, campoSenha) ){
+                adminDAO = new AdminDAO(this);
+                List<Administrador> listaAdmin = adminDAO.selecionarAdmin();
+                for(int i=0; i< listaAdmin.size(); i++){
+                    if( (listaAdmin.get(i).getEmail().equals(campoEmail)) && (listaAdmin.get(i).getSenha().equals(campoSenha)) ){
+                        Usuario.id = listaAdmin.get(i).getId();
+                        Usuario.nome = listaAdmin.get(i).getEmail();
+                        Usuario.senha = listaAdmin.get(i).getSenha();
+                        Usuario.tipo = listaAdmin.get(i).getTipoDeUsuario();
+                        TelaPrincipalActivity.this.finish();
+                        startActivity(new Intent(this, PainelDeControleAdminActivity.class));
+                        return;
+                    }
+                }
             }
             else if( cobradorDAO.fazerLogin(campoEmail, campoSenha) ){
                 cobradorDAO = new CobradorDAO(this);

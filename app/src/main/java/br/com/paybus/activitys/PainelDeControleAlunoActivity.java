@@ -32,7 +32,7 @@ public class PainelDeControleAlunoActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.menu_sobre:
-                PainelDeControleAlunoActivity.this.finish();
+                //PainelDeControleAlunoActivity.this.finish();
                 startActivity(new Intent(PainelDeControleAlunoActivity.this, SobreActivity.class));
                 break;
             case R.id.menu_alterar_senha:

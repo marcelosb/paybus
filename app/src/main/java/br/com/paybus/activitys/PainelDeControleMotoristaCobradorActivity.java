@@ -39,7 +39,7 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
 
         switch (item.getItemId()){
             case R.id.menu_sobre:
-                PainelDeControleMotoristaCobradorActivity.this.finish();
+                //PainelDeControleMotoristaCobradorActivity.this.finish();
                 startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, SobreActivity.class));
                 break;
             case R.id.menu_alterar_senha:
@@ -57,21 +57,13 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-
     public void irParaTelaListaDeAlunos(View view){
         startActivity(new Intent(this, ListaDeAlunosActivity.class));
-    }
-
-
-    public void irParaTelaInadimplentes(View view){
-        startActivity(new Intent(this, InadimplentesActivity.class));
     }
 
     public void irParaTelaReceberPagamentos(View view){
         startActivity(new Intent(this, ReceberPagamentosActivity.class));
     }
-
 
     public void irParaTelaRelatorios(View view){
         startActivity(new Intent(this, RelatoriosActivity.class));

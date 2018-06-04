@@ -64,6 +64,7 @@
 
     <Button
         android:id="@+id/botaoLogin"
+        style="@android:style/Widget.Button.Inset"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"

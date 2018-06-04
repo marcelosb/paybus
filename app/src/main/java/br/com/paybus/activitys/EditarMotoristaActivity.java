@@ -10,14 +10,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import br.com.paybus.R;
-import br.com.paybus.controle.AlunoControl;
 import br.com.paybus.controle.MotoristaControl;
-import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.MotoristaDAO;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Motorista;
 
 public class EditarMotoristaActivity extends AppCompatActivity {

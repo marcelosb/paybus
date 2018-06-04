@@ -9,21 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
 
 import br.com.paybus.R;
-import br.com.paybus.controle.AlunoControl;
 import br.com.paybus.controle.MotoristaControl;
-import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.MotoristaDAO;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Motorista;
 import br.com.paybus.utilitarios.Verifica;
-
 
 public class CadastrarMotoristaActivity extends AppCompatActivity {
 

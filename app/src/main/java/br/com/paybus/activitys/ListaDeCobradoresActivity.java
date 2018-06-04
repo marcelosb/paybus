@@ -14,7 +14,6 @@ import java.util.List;
 import br.com.paybus.R;
 import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.modelo.Cobrador;
-import br.com.paybus.utilitarios.AlunoRecyclerViewAdapter;
 import br.com.paybus.utilitarios.CobradorRecyclerViewAdapter;
 
 public class ListaDeCobradoresActivity extends AppCompatActivity {

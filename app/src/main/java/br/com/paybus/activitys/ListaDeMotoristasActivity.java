@@ -12,12 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.paybus.R;
-import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.dao.MotoristaDAO;
-import br.com.paybus.modelo.Aluno;
-import br.com.paybus.modelo.Cobrador;
 import br.com.paybus.modelo.Motorista;
-import br.com.paybus.utilitarios.CobradorRecyclerViewAdapter;
 import br.com.paybus.utilitarios.MotoristaRecyclerViewAdapter;
 
 public class ListaDeMotoristasActivity extends AppCompatActivity {

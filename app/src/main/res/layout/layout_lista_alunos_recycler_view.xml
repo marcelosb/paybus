@@ -56,7 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="1dp"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:text="FIP - Faculdades Integradas de Patos"

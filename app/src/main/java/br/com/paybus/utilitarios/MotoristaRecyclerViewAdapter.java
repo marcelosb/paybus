@@ -16,16 +16,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.paybus.R;
-import br.com.paybus.activitys.EditarAlunoActivity;
-import br.com.paybus.activitys.EditarCobradorActivity;
 import br.com.paybus.activitys.EditarMotoristaActivity;
-import br.com.paybus.activitys.ListaDeAlunosActivity;
-import br.com.paybus.activitys.ListaDeCobradoresActivity;
 import br.com.paybus.activitys.ListaDeMotoristasActivity;
-import br.com.paybus.dao.AlunoDAO;
-import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.dao.MotoristaDAO;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Motorista;
 
 

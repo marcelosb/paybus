@@ -33,7 +33,7 @@ public class PainelDeControleAdminActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.menu_sobre:
-                PainelDeControleAdminActivity.this.finish();
+                //PainelDeControleAdminActivity.this.finish();
                 startActivity(new Intent(PainelDeControleAdminActivity.this, SobreActivity.class));
                 break;
             case R.id.menu_alterar_senha:
@@ -56,11 +56,7 @@ public class PainelDeControleAdminActivity extends AppCompatActivity {
     }
 
     public void irParaTelaReceberPagamentos(View view){
-        startActivity(new Intent(PainelDeControleAdminActivity.this, ReceberPagamentosActivity.class));
-    }
-
-    public void irParaTelaInadimplentes(View view){
-        startActivity(new Intent(PainelDeControleAdminActivity.this, InadimplentesActivity.class));
+        startActivity(new Intent(PainelDeControleAdminActivity.this, ListarPagamentos.class));
     }
 
     public void irParaTelaRelatorios(View view){

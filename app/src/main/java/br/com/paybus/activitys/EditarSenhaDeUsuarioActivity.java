@@ -9,13 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.List;
-
 import br.com.paybus.R;
+import br.com.paybus.dao.AdminDAO;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.dao.MotoristaDAO;
-import br.com.paybus.modelo.Aluno;
 import br.com.paybus.utilitarios.PainelDeDialogo;
 import br.com.paybus.utilitarios.Usuario;
 
@@ -39,7 +37,7 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 }else if( Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
                     EditarSenhaDeUsuarioActivity.this.finish();
                     startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
-                }else{
+                }else if( Usuario.tipo.equals("admin") ){
                     EditarSenhaDeUsuarioActivity.this.finish();
                     startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAdminActivity.class));
                 }
@@ -119,13 +117,13 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
             }
 
 
-        }else if(Usuario.tipo.equals("motorista")){
+        }else if(Usuario.tipo.equals("motorista")) {
 
             String senhaAtual = campoSenha.getText().toString();
             String novaSenha = campoNova.getText().toString();
             String confirmarNovaSenha = campoConfirmarNova.getText().toString();
 
-            if( novaSenha.equals(confirmarNovaSenha)  ){
+            if (novaSenha.equals(confirmarNovaSenha)) {
                 MotoristaDAO motoristaDAO = new MotoristaDAO(this);
                 motoristaDAO.atualizarSenhaDoMotorista(Usuario.id, novaSenha);
 
@@ -134,7 +132,8 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 caixaDeDialogo.setTitle("Mensagem");
                 caixaDeDialogo.setMessage("Senha alterada com sucesso!");
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
                         EditarSenhaDeUsuarioActivity.this.finish();
                         startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
                     }
@@ -149,6 +148,38 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                         "Também verifique se a nova senha e a confirmação dessa nova senha foram digitadas corretamente", this );
             }
 
+        }else if(Usuario.tipo.equals("admin")) {
+
+            String senhaAtual = campoSenha.getText().toString();
+            String novaSenha = campoNova.getText().toString();
+            String confirmarNovaSenha = campoConfirmarNova.getText().toString();
+
+            if (novaSenha.equals(confirmarNovaSenha)) {
+                AdminDAO adminDAO = new AdminDAO(this);
+                adminDAO.atualizarSenhaDoAdministrador(Usuario.id, novaSenha);
+
+                AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(this);
+                caixaDeDialogo.setCancelable(false);
+                caixaDeDialogo.setTitle("Mensagem");
+                caixaDeDialogo.setMessage("Senha alterada com sucesso!");
+                caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        EditarSenhaDeUsuarioActivity.this.finish();
+                        startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAdminActivity.class));
+                    }
+                });
+                caixaDeDialogo.create();
+                caixaDeDialogo.show();
+
+            }else{
+                PainelDeDialogo painelDeDialogo = new PainelDeDialogo();
+                painelDeDialogo.mostrarMensagemDeErro("Erro","Verifique se a senha atual foi inserida corretamente no campo específicado\n\n" +
+                        "Também verifique se a nova senha e a confirmação dessa nova senha foram digitadas corretamente", this );
+            }
+
         }
+
+
     }
 }
