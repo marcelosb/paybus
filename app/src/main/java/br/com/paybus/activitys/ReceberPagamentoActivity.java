@@ -1,7 +1,11 @@
 package br.com.paybus.activitys;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,8 +28,19 @@ import br.com.paybus.dao.PagamentoDAO;
 import br.com.paybus.modelo.Cobrador;
 import br.com.paybus.modelo.Motorista;
 import br.com.paybus.modelo.Pagamento;
+import br.com.paybus.modelo.Pagamentos;
+import br.com.paybus.utilitarios.GerarPDFPagamento;
 
 public class ReceberPagamentoActivity extends AppCompatActivity {
+
+    //importante!!  este objeto deve ser global para entrar nos metodos
+    GerarPDFPagamento gerarPDF;
+    //importante!!  esta variavel deve ser global para entar nos metodos
+    Pagamentos pagamentos;
+
+    //codigo para pedido de permissao
+    public static final int REQUEST_PERMISSIONS_CODE = 128;
+
 
     List<String> listaCobradorPagamento;
     List<Cobrador> listaCobrador;
@@ -127,11 +142,21 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
         pagamentoDAO = new PagamentoDAO(this);
         pagamentoDAO.atualizarPagamento(pagamento);
 
+        //iniciando a variavel gerar pdf
+        gerarPDF = new GerarPDFPagamento(getApplicationContext());
+        //inicinado o objeto pagamento
+        //pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
+
         AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentoActivity.this);
         caixaDeDialogo.setCancelable(false);
         caixaDeDialogo.setTitle("Mensagem");
-        caixaDeDialogo.setMessage("Pagamento realizado com sucesso");
-        caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        caixaDeDialogo.setMessage("Pagamento realizado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
+        caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialogInterface, int i) {
+                chamarPermissaoGravacao(pagamento);
+            }
+        });
+        caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
                 ReceberPagamentoActivity.this.finish();
                 startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
@@ -142,6 +167,51 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
     }
 
 
+    //metodo que faz a verificação se ja tem permissao ou não para gravação e criação na memoria
+    public void chamarPermissaoGravacao(Pagamento pagamento) {
 
+        //verifica a permição e se o usuario ja negou alguma vez essa permição
+        if( ContextCompat.checkSelfPermission( this, Manifest.permission.WRITE_EXTERNAL_STORAGE ) != PackageManager.PERMISSION_GRANTED ){
+
+            //caso ja tenha negado, esse if serve para pedir novamente, com uma msg especial criada pelo progrmador
+            //infromando a importancia desta função para o aplicativo;
+            if( ActivityCompat.shouldShowRequestPermissionRationale( this, Manifest.permission.WRITE_EXTERNAL_STORAGE ) ){
+                pedirPermissao( "É preciso a sua permissão para exibir o comprovante de pagamento.\nPara continuar por favor aceite os termos.", new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE} );
+            }
+
+            //caso nao seja necessario pedir novamente ele ja manda a permissão pra ser aceita
+            else{
+                ActivityCompat.requestPermissions( this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSIONS_CODE );
+            }
+        }
+
+        //ja tiver sido aceita a permissão , executa o metodo direto de geração de pdf
+        else{
+            gerarPDF.criarPDF(pagamento);
+        }
+
+    }
+
+    //metodo para pedir permissao ao usuario se ele deseja ou n liberar para gerar documento e escrever
+    private void pedirPermissao( String message, final String[] permissions ){
+        AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentoActivity.this);
+        caixaDeDialogo.setCancelable(false);
+        caixaDeDialogo.setTitle("Permissão");
+        caixaDeDialogo.setMessage(message);
+        caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialogInterface, int i) {
+                //se o usuario aceitar, ele manda a permissao para ser aceita
+                ActivityCompat.requestPermissions(ReceberPagamentoActivity.this, permissions, REQUEST_PERMISSIONS_CODE);
+
+            }
+        });
+        caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        caixaDeDialogo.create();
+        caixaDeDialogo.show();
+
+    }
 
 }

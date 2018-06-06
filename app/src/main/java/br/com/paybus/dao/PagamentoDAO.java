@@ -129,6 +129,7 @@ public class PagamentoDAO {
             Cursor cursor = db.rawQuery( "SELECT * FROM "+Tabela.PAGAMENTO +" WHERE mes_e_ano_do_pagamento = ? ", new String[]{mesDePagamento});
             //String queryListaPagamentoAluno = "SELECT * FROM "+Tabela.PAGAMENTO+";";
             //Cursor cursor = db.rawQuery(queryListaPagamentoAluno, null);
+            ListaDeAlunosPagamentos.totalPagadoresEDevedores = 0;
             if (cursor.moveToFirst()) {
                 do {
                     Pagamento pagamento = new Pagamento();
@@ -145,6 +146,8 @@ public class PagamentoDAO {
                     pagamento.setObservacao(cursor.getString(10));
 
                     listaPagamentosAlunos.add(pagamento);
+
+                    ListaDeAlunosPagamentos.totalPagadoresEDevedores = ListaDeAlunosPagamentos.totalPagadoresEDevedores + 1;
                 } while (cursor.moveToNext());
             }
         }catch(Exception e ){

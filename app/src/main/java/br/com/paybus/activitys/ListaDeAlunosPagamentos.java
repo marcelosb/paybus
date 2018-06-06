@@ -30,6 +30,7 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
 
     public static int numeroDeDevedores;
     public static int numeroDePagadores;
+    public static int totalPagadoresEDevedores;
 
     public List<Pagamento> listaPagamentosAlunos;
     private PagamentoAlunoRecyclerViewAdapter pagamentoAlunoRecyclerViewAdapter;
@@ -187,6 +188,7 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
 
     public void botaoMostrarTodos(View view){
         criarRecyclerViewPagamentoAluno();
+        Toast.makeText(this,String.valueOf(ListaDeAlunosPagamentos.totalPagadoresEDevedores) +" alunos estão na lista de pagamento do mês de "+PagamentoRecyclerViewAdapter.mesPagamento, Toast.LENGTH_LONG ).show();
     }
 
     public void botaoMostrarEstatisticas(View view){

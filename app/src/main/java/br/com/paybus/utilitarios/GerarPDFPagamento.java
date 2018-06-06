@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import br.com.paybus.activitys.ViewPDFActivity;
+import br.com.paybus.modelo.Pagamento;
 import br.com.paybus.modelo.Pagamentos;
 
 public class GerarPDFPagamento {
@@ -31,19 +32,19 @@ public class GerarPDFPagamento {
     //private Font fonteTextoAcima= new Font(Font.FontFamily.TIMES_ROMAN,16,Font.BOLD, BaseColor.RED);
 
 
-
     public GerarPDFPagamento(Context context) {
         this.context=context;
     }
 
 
-    public void criarPDF(Pagamentos pagamento) {
+    public void criarPDF(Pagamento pagamento) {
         criarDocumentoVazio();
         addMetaDados();
         addTituloDocumento(pagamento.getDataDoPagamento());
-        addTextoParagrafo("Motorista: "+pagamento.getMotorista());
-        addTextoParagrafo("Cobrador: "+pagamento.getCobrador());
-        addTextoParagrafo("Estudante: "+pagamento.getAluno());
+        addTextoParagrafo("Motorista: "+pagamento.getNomeDoMotorista());
+        addTextoParagrafo("Cobrador: "+pagamento.getNomeDoCobrador());
+        addTextoParagrafo("Estudante: "+pagamento.getNomeDoAluno());
+        addTextoParagrafo("Instituição de Ensino: "+pagamento.getInstituicaoDeEnsinoDoAluno());
         addTextoParagrafo("Data de Vencimento: "+pagamento.getDataDoVencimento());
         addTextoParagrafo("Valor do pagamento: "+pagamento.getValorDoPagamento().toString());
         addTextoParagrafo("Observação: "+pagamento.getObservacao());

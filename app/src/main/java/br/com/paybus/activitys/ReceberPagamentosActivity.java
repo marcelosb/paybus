@@ -34,12 +34,13 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
     AlunoDAO alunoDAO;
     List<String> listaDeNomes;
     EditText campoSelecionarInstituicaoPagamento;
+
     //importante!!  este objeto deve ser global para entrar nos metodos
     GerarPDFPagamento gerarPDF;
     //importante!!  esta variavel deve ser global para entar nos metodos
     Pagamentos pagamento;
 
-    //codigo para peido de permissao
+    //codigo para pedido de permissao
     public static final int REQUEST_PERMISSIONS_CODE = 128;
 
     @Override
@@ -105,7 +106,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Pagamento realizado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
         caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                //chamarPermissaoGravacao(pagamento);
+                chamarPermissaoGravacao(pagamento);
             }
         });
         caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -134,7 +135,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
                     //caso ja tenha a permissao, só criar e escrever o arquivo
                     if( permissions[i].equalsIgnoreCase( Manifest.permission.WRITE_EXTERNAL_STORAGE )
                             && grantResults[i] == PackageManager.PERMISSION_GRANTED ){
-                        gerarPDF.criarPDF(pagamento);
+                        //gerarPDF.criarPDF(pagamento);
 
                     }
 
@@ -188,7 +189,7 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
 
         //ja tiver sido aceita a permissão , executa o metodo direto de geração de pdf
         else{
-            gerarPDF.criarPDF(pagamento);
+            //gerarPDF.criarPDF(pagamento);
 
         }
 
