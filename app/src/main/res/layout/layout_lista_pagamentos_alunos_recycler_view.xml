@@ -50,7 +50,7 @@
         android:gravity="right"
         android:text="&#8942;"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="25sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

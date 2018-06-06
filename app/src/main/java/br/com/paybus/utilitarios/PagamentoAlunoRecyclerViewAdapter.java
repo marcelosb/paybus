@@ -23,7 +23,6 @@ import br.com.paybus.activitys.ReceberPagamentoActivity;
 import br.com.paybus.dao.PagamentoDAO;
 import br.com.paybus.modelo.Pagamento;
 
-
 public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<PagamentoAlunoRecyclerViewAdapter.ViewHolderPagamentoAluno>   {
 
     List<Pagamento> listaDePagamentosAlunos;
@@ -37,7 +36,6 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
     @NonNull
     @Override
     public PagamentoAlunoRecyclerViewAdapter.ViewHolderPagamentoAluno onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.layout_lista_pagamentos_alunos_recycler_view, parent, false);
         return new ViewHolderPagamentoAluno(view);
@@ -92,7 +90,38 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                     //((ListaDeAlunosPagamentos) context).finish();
                     context.startActivity(intent);
                 }
+            });
 
+            holder.textoInstituicaoAlunoPagamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                    //((ListaDeAlunosPagamentos) context).finish();
+                    context.startActivity(intent);
+                }
+            });
+
+            holder.imagemAlunoPagamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                    //((ListaDeAlunosPagamentos) context).finish();
+                    context.startActivity(intent);
+                }
             });
 
             holder.textoMenuNeverAlunoPagamento.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +158,16 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                     caixaDeDialogo.show();
                                     break;
                                 case R.id.popup_fazer_pagamento_aluno:
+                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                                    //((ListaDeAlunosPagamentos) context).finish();
+                                    context.startActivity(intent);
                                     break;
                                 default:
                                     break;
@@ -181,6 +220,16 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                     caixaDeDialogo.show();
                                     break;
                                 case R.id.popup_fazer_pagamento_aluno:
+                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                                    //((ListaDeAlunosPagamentos) context).finish();
+                                    context.startActivity(intent);
                                     break;
                                 default:
                                     break;
@@ -197,7 +246,6 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
 
 
         }
-
 
     }
 
