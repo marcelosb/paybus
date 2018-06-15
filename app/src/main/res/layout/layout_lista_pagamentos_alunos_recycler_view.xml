@@ -25,8 +25,8 @@
 
     <TextView
         android:id="@+id/textoNomeAlunoPagamento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
@@ -41,8 +41,8 @@
 
     <TextView
         android:id="@+id/textoMenuNeverAlunoPagamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginTop="1dp"
@@ -50,7 +50,7 @@
         android:gravity="right"
         android:text="&#8942;"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,8 +66,8 @@
 
     <TextView
         android:id="@+id/textoInstituicaoAlunoPagamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="18dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:text="FIP - Faculdades Integradas de Patos"

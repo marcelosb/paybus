@@ -14,6 +14,7 @@ import br.com.paybus.acesso_banco_de_dados.Tabela;
 import br.com.paybus.activitys.ListaDeAlunosPagamentos;
 import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Pagamento;
+import br.com.paybus.utilitarios.ParteFinanceiraRecyclerViewAdapter;
 
 public class PagamentoDAO {
 
@@ -158,6 +159,39 @@ public class PagamentoDAO {
         return listaPagamentosAlunos;
     }
 
+    public List<Pagamento> listarPagamentos(){
+        List<Pagamento> listaPagamentosAlunos = new ArrayList<Pagamento>();
+        try {
+            String queryListaPagamentoAluno = "SELECT * FROM "+Tabela.PAGAMENTO+";";
+            Cursor cursor = db.rawQuery(queryListaPagamentoAluno, null);
+            ListaDeAlunosPagamentos.totalPagadoresEDevedores = 0;
+            if (cursor.moveToFirst()) {
+                do {
+                    Pagamento pagamento = new Pagamento();
+                    pagamento.setId(Integer.parseInt(cursor.getString(0)));
+                    pagamento.setMesEAnoDoPagamento(cursor.getString(1));
+                    pagamento.setDataDoPagamento(cursor.getString(2));
+                    pagamento.setDataDoVencimento(cursor.getString(3));
+                    pagamento.setValorDoPagamento(Double.parseDouble(cursor.getString(4)));
+                    pagamento.setStatus(cursor.getString(5));
+                    pagamento.setNomeDoAluno(cursor.getString(6));
+                    pagamento.setInstituicaoDeEnsinoDoAluno(cursor.getString(7));
+                    pagamento.setNomeDoCobrador(cursor.getString(8));
+                    pagamento.setNomeDoMotorista(cursor.getString(9));
+                    pagamento.setObservacao(cursor.getString(10));
+
+                    listaPagamentosAlunos.add(pagamento);
+
+                } while (cursor.moveToNext());
+            }
+        }catch(Exception e ){
+            e.printStackTrace();
+        }finally{
+            db.close();
+        }
+        return listaPagamentosAlunos;
+    }
+
     public List<Pagamento> listarPagamentosPagadoresEDevedores(String mesDePagamento, String status){
         List<Pagamento> listaPagamentosAlunosDevedores = new ArrayList<Pagamento>();
         try {
@@ -227,6 +261,10 @@ public class PagamentoDAO {
                     pagamento.setObservacao(cursor.getString(10));
 
                     listaPagamentosAlunosMes.add(pagamento);
+
+                    ParteFinanceiraRecyclerViewAdapter.valorTotalArrecadado =
+                            ParteFinanceiraRecyclerViewAdapter.valorTotalArrecadado + pagamento.getValorDoPagamento();
+
                 } while (cursor.moveToNext());
             }
         }catch(Exception e ){
@@ -257,5 +295,41 @@ public class PagamentoDAO {
             db.close();
         }
     }
+
+
+    public List<Pagamento> listarComprovantesDePagamento(String nomeDoAluno){
+        List<Pagamento> listaPagamentosAlunos = new ArrayList<Pagamento>();
+        try {
+            Cursor cursor = db.rawQuery( "SELECT * FROM "+Tabela.PAGAMENTO +" WHERE nome_do_aluno = ? AND status = ? ", new String[]{nomeDoAluno, "Pago"});
+            //String queryListaPagamentoAluno = "SELECT * FROM "+Tabela.PAGAMENTO+";";
+            //Cursor cursor = db.rawQuery(queryListaPagamentoAluno, null);
+            
+            if (cursor.moveToFirst()) {
+                do {
+                    Pagamento pagamento = new Pagamento();
+                    pagamento.setId(Integer.parseInt(cursor.getString(0)));
+                    pagamento.setMesEAnoDoPagamento(cursor.getString(1));
+                    pagamento.setDataDoPagamento(cursor.getString(2));
+                    pagamento.setDataDoVencimento(cursor.getString(3));
+                    pagamento.setValorDoPagamento(Double.parseDouble(cursor.getString(4)));
+                    pagamento.setStatus(cursor.getString(5));
+                    pagamento.setNomeDoAluno(cursor.getString(6));
+                    pagamento.setInstituicaoDeEnsinoDoAluno(cursor.getString(7));
+                    pagamento.setNomeDoCobrador(cursor.getString(8));
+                    pagamento.setNomeDoMotorista(cursor.getString(9));
+                    pagamento.setObservacao(cursor.getString(10));
+
+                    listaPagamentosAlunos.add(pagamento);
+
+                } while (cursor.moveToNext());
+            }
+        }catch(Exception e ){
+            e.printStackTrace();
+        }finally{
+            db.close();
+        }
+        return listaPagamentosAlunos;
+    }
+
 
 }

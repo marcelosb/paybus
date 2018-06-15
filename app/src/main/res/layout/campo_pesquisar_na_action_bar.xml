@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_weight="1"
-        android:drawableRight="@drawable/icone_buscando"
+        android:drawableRight="@drawable/icc_search"
         android:ems="10"
         android:hint="Pesquisar pelo nome..."
         android:inputType="textPersonName"

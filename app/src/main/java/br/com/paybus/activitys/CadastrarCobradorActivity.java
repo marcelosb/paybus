@@ -57,7 +57,7 @@ public class CadastrarCobradorActivity extends AppCompatActivity {
 
         verifica = new Verifica();
 
-        if(verifica.cobrador(campoNomeCompletoCobrador.getText().toString(), comboBoxSelecionarInstituicaoCobrador.getSelectedItem().toString(), this) == true){
+        if(verifica.cobrador(campoNomeCompletoCobrador.getText().toString(), comboBoxSelecionarInstituicaoCobrador.getSelectedItem().toString(), campoCPFCobrador.getText().toString(), campoEmailCobrador.getText().toString(), this) ){
             cobrador.setNomeCompleto(campoNomeCompletoCobrador.getText().toString());
             cobrador.setInstituicao(comboBoxSelecionarInstituicaoCobrador.getSelectedItem().toString());
             cobrador.setCpf(campoCPFCobrador.getText().toString());

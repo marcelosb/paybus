@@ -34,7 +34,7 @@ public class PainelDeControleAdminActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_sobre:
                 //PainelDeControleAdminActivity.this.finish();
-                startActivity(new Intent(PainelDeControleAdminActivity.this, SobreActivity.class));
+                startActivity(new Intent(PainelDeControleAdminActivity.this, ViewPDFAjudaAdminActivity.class));
                 break;
             case R.id.menu_alterar_senha:
                 PainelDeControleAdminActivity.this.finish();
@@ -63,5 +63,8 @@ public class PainelDeControleAdminActivity extends AppCompatActivity {
         startActivity(new Intent(PainelDeControleAdminActivity.this, RelatoriosActivity.class));
     }
 
+    public void irParaTelaFinanceira(View view){
+        startActivity(new Intent(PainelDeControleAdminActivity.this, ParteFinanceiraActivity.class));
+    }
 
 }

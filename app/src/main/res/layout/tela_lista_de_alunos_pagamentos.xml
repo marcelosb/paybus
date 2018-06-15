@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_marginTop="10dp"
     tools:context=".activitys.ListaDeAlunosPagamentos">
 
@@ -30,10 +32,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:background="#e1dddd"
-        android:drawableRight="@drawable/icone_busca"
+        android:background="@drawable/edit_text_customizado"
+        android:drawableLeft="@drawable/search_aluno_pagamento"
+        android:drawablePadding="15dp"
         android:ems="10"
-        android:hint="     Pesquisar pelo nome do aluno..."
+        android:hint="Pesquisar pelo nome do aluno..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

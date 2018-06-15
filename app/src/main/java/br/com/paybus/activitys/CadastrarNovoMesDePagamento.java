@@ -18,6 +18,7 @@ import br.com.paybus.dao.PagamentoDAO;
 import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.MesDoPagamento;
 import br.com.paybus.modelo.Pagamento;
+import br.com.paybus.utilitarios.PainelDeDialogo;
 import br.com.paybus.utilitarios.Verifica;
 
 public class CadastrarNovoMesDePagamento extends AppCompatActivity {
@@ -57,7 +58,7 @@ public class CadastrarNovoMesDePagamento extends AppCompatActivity {
     public void botaoAdicionarNovoMesDePagamento(View view){
 
         mesDoPagamento = new MesDoPagamento();
-        mesDoPagamentoDAO = new MesDoPagamentoDAO(this);
+
         Spinner comboBoxSelecionarMesDePagamentos = findViewById(R.id.campoSelecioneMesDePagamentos);
         String mesDePagamentos = comboBoxSelecionarMesDePagamentos.getSelectedItem().toString();
         Spinner comboBoxSelecionarAnoDePagamentos = findViewById(R.id.campoSelecioneAnoDePagamentos);
@@ -95,37 +96,54 @@ public class CadastrarNovoMesDePagamento extends AppCompatActivity {
         Spinner comboBoxSelecionarAnoDePagamentoVencimento = findViewById(R.id.selecioneAnoDoPagamentoVencimento);
         String anoDePagamentoVencimento = comboBoxSelecionarAnoDePagamentoVencimento.getSelectedItem().toString();
         mesDoPagamento.setDataDoVencimento(diaDePagamentoVencimento+"/"+mesDePagamentoVencimento+"/"+anoDePagamentoVencimento);
-        mesDoPagamentoDAO.inserirMesDoPagamento(mesDoPagamento);
 
-        alunoDAO = new AlunoDAO(this);
-        listaDeAlunos = alunoDAO.listarAlunos();
-
-        pagamento = new Pagamento();
-        pagamentoDAO = new PagamentoDAO(this);
-        pagamento.setMesEAnoDoPagamento(mesDePagamentos+" de "+anoDePagamentos);
-        pagamento.setDataDoPagamento("D");
-        pagamento.setDataDoVencimento(diaDePagamentoVencimento+"/"+mesDePagamentoVencimento+"/"+anoDePagamentoVencimento);
-        pagamento.setValorDoPagamento(0.0);
-        pagamento.setStatus("Não Pago");
-        pagamento.setNomeDoAluno("A");
-        pagamento.setInstituicaoDeEnsinoDoAluno("I");
-        pagamento.setNomeDoCobrador("C");
-        pagamento.setNomeDoMotorista("M");
-        pagamento.setObservacao("O");
-        pagamentoDAO.inserirPagamento(pagamento, listaDeAlunos);
-
-        AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(CadastrarNovoMesDePagamento.this);
-        caixaDeDialogo.setCancelable(false);
-        caixaDeDialogo.setTitle("Mensagem");
-        caixaDeDialogo.setMessage("Cadastro de novo mês de pagamento realizado com sucesso");
-        caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialogInterface, int i) {
-                CadastrarNovoMesDePagamento.this.finish();
-                startActivity(new Intent(CadastrarNovoMesDePagamento.this, ListarPagamentos.class));
+        boolean jaExisteMesCadastrado = false;
+        mesDoPagamentoDAO = new MesDoPagamentoDAO(this);
+        List<MesDoPagamento> listaMesesPag = mesDoPagamentoDAO.listarMesesDoPagamento();
+        for(int i=0; i<listaMesesPag.size();i++){
+            if(listaMesesPag.get(i).getMesEAnoDoPagamento().equals(mesDoPagamento.getMesEAnoDoPagamento())){
+                jaExisteMesCadastrado = true;
+                break;
             }
-        });
-        caixaDeDialogo.create();
-        caixaDeDialogo.show();
+        }
+
+        if(jaExisteMesCadastrado){
+            new PainelDeDialogo().mostrarMensagemDeErro("Erro", "Mês e Ano de pagamento já existente!", this);
+        }else{
+            MesDoPagamentoDAO mesPagDAO = new MesDoPagamentoDAO(this);
+            mesPagDAO.inserirMesDoPagamento(mesDoPagamento);
+
+            alunoDAO = new AlunoDAO(this);
+            listaDeAlunos = alunoDAO.listarAlunos();
+
+            pagamento = new Pagamento();
+            pagamentoDAO = new PagamentoDAO(this);
+            pagamento.setMesEAnoDoPagamento(mesDePagamentos+" de "+anoDePagamentos);
+            pagamento.setDataDoPagamento("D");
+            pagamento.setDataDoVencimento(diaDePagamentoVencimento+"/"+mesDePagamentoVencimento+"/"+anoDePagamentoVencimento);
+            pagamento.setValorDoPagamento(0.0);
+            pagamento.setStatus("Não Pago");
+            pagamento.setNomeDoAluno("A");
+            pagamento.setInstituicaoDeEnsinoDoAluno("I");
+            pagamento.setNomeDoCobrador("C");
+            pagamento.setNomeDoMotorista("M");
+            pagamento.setObservacao("O");
+            pagamentoDAO.inserirPagamento(pagamento, listaDeAlunos);
+
+            AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(CadastrarNovoMesDePagamento.this);
+            caixaDeDialogo.setCancelable(false);
+            caixaDeDialogo.setTitle("Mensagem");
+            caixaDeDialogo.setMessage("Cadastro de novo mês de pagamento realizado com sucesso");
+            caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override public void onClick(DialogInterface dialogInterface, int i) {
+                    CadastrarNovoMesDePagamento.this.finish();
+                    startActivity(new Intent(CadastrarNovoMesDePagamento.this, ListarPagamentos.class));
+                }
+            });
+            caixaDeDialogo.create();
+            caixaDeDialogo.show();
+        }
+
 
     }
 }

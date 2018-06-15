@@ -58,7 +58,7 @@ public class CadastrarMotoristaActivity extends AppCompatActivity {
 
         verifica = new Verifica();
 
-        if(verifica.aluno(campoNomeMotorista.getText().toString(), campoCPFMotorista.getText().toString(), this) == true){
+        if(verifica.motorista(campoNomeMotorista.getText().toString(), campoCPFMotorista.getText().toString(),campoEmailMotorista.getText().toString(), this) ){
             motorista.setNomeCompleto(campoNomeMotorista.getText().toString());
             motorista.setCpf(campoCPFMotorista.getText().toString());
             motorista.setEndereco(campoEnderecoMotorista.getText().toString());

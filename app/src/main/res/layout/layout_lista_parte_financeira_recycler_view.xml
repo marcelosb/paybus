@@ -18,12 +18,12 @@
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:background="@drawable/usuario_motorista"
+            android:background="@drawable/calendario_verde"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textoNomeMotorista"
+            android:id="@+id/textoMesParteFinanceira"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -31,47 +31,33 @@
             android:layout_marginTop="5dp"
             android:paddingLeft="0dp"
             android:paddingTop="0dp"
-            android:text="Ramos Alves"
+            android:text="Janeiro de 2018"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textoTelefoneMotorista"
+            android:id="@+id/textoValorArrecadaParteFinanceira"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:paddingLeft="0dp"
             android:paddingTop="0dp"
-            android:text="FIP - Faculdades Integradas de Patos"
+            android:text="Total Arrecadado: R$ 100"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textoNomeMotorista" />
-
-        <TextView
-            android:id="@+id/textoMenuNeverMotorista"
-            android:layout_width="25dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="&#8942;"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textoMesParteFinanceira" />
 
         <View
             android:id="@+id/divider6"
             android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="3dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textoTelefoneMotorista" />
+            app:layout_constraintTop_toBottomOf="@+id/textoValorArrecadaParteFinanceira" />
 
 </android.support.constraint.ConstraintLayout>

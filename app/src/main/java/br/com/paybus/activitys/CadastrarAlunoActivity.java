@@ -60,47 +60,49 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
             EditText campoTelefoneAluno = findViewById(R.id.campoTelefoneAluno);
             EditText campoEmailAluno = findViewById(R.id.campoEmailAluno);
 
-            alunoPagamento.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
-            alunoPagamento.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
-            alunoPagamento.setCpf(campoCPFAluno.getText().toString());
-            alunoPagamento.setEndereco(campoEnderecoAluno.getText().toString());
-            alunoPagamento.setTelefone(campoTelefoneAluno.getText().toString());
-            alunoPagamento.setSenha(campoCPFAluno.getText().toString());
-            alunoPagamento.setTipoDeUsuario("aluno");
-            alunoPagamento.setEmail(campoEmailAluno.getText().toString());
+            if(verifica.aluno(campoNomeCompletoAluno.getText().toString(), comboBoxSelecionarInstituicao.getSelectedItem().toString(), campoCPFAluno.getText().toString(), campoEmailAluno.getText().toString(), this)){
 
-            dao.inserirAluno(alunoPagamento);
+                alunoPagamento.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
+                alunoPagamento.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
+                alunoPagamento.setCpf(campoCPFAluno.getText().toString());
+                alunoPagamento.setEndereco(campoEnderecoAluno.getText().toString());
+                alunoPagamento.setTelefone(campoTelefoneAluno.getText().toString());
+                alunoPagamento.setSenha(campoCPFAluno.getText().toString());
+                alunoPagamento.setTipoDeUsuario("aluno");
+                alunoPagamento.setEmail(campoEmailAluno.getText().toString());
 
-            Pagamento pagamento = new Pagamento();
-            PagamentoDAO pagamentoDAO = new PagamentoDAO(CadastrarAlunoActivity.this);
-            pagamento.setMesEAnoDoPagamento(ListaDeAlunosPagamentos.mesDePagamento);
-            pagamento.setDataDoPagamento("D");
-            pagamento.setDataDoVencimento(ListaDeAlunosPagamentos.dataDeVencimento);
-            pagamento.setValorDoPagamento(0.0);
-            pagamento.setStatus("Não Pago");
-            pagamento.setNomeDoAluno(alunoPagamento.getNomeCompleto());
-            pagamento.setInstituicaoDeEnsinoDoAluno(alunoPagamento.getInstituicao());
-            pagamento.setNomeDoCobrador("C");
-            pagamento.setNomeDoMotorista("M");
-            pagamento.setObservacao("O");
+                dao.inserirAluno(alunoPagamento);
 
-            pagamentoDAO.inserirPagamento(pagamento);
+                Pagamento pagamento = new Pagamento();
+                PagamentoDAO pagamentoDAO = new PagamentoDAO(CadastrarAlunoActivity.this);
+                pagamento.setMesEAnoDoPagamento(ListaDeAlunosPagamentos.mesDePagamento);
+                pagamento.setDataDoPagamento("D");
+                pagamento.setDataDoVencimento(ListaDeAlunosPagamentos.dataDeVencimento);
+                pagamento.setValorDoPagamento(0.0);
+                pagamento.setStatus("Não Pago");
+                pagamento.setNomeDoAluno(alunoPagamento.getNomeCompleto());
+                pagamento.setInstituicaoDeEnsinoDoAluno(alunoPagamento.getInstituicao());
+                pagamento.setNomeDoCobrador("C");
+                pagamento.setNomeDoMotorista("M");
+                pagamento.setObservacao("O");
 
-            TelaPrincipalActivity.novoAlunoPagamento = "falso";
+                pagamentoDAO.inserirPagamento(pagamento);
 
-            AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(CadastrarAlunoActivity.this);
-            caixaDeDialogo.setCancelable(false);
-            caixaDeDialogo.setTitle("Mensagem");
-            caixaDeDialogo.setMessage("Cadastro realizado com sucesso!\n\nNovo(a) aluno(a) adicionado(a) para a lista de pagamentos de "+ListaDeAlunosPagamentos.mesDePagamento);
-            caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override public void onClick(DialogInterface dialogInterface, int i) {
-                    CadastrarAlunoActivity.this.finish();
-                    startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosPagamentos.class));
-                }
-            });
-            caixaDeDialogo.create();
-            caixaDeDialogo.show();
+                TelaPrincipalActivity.novoAlunoPagamento = "falso";
 
+                AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(CadastrarAlunoActivity.this);
+                caixaDeDialogo.setCancelable(false);
+                caixaDeDialogo.setTitle("Mensagem");
+                caixaDeDialogo.setMessage("Cadastro realizado com sucesso!\n\nNovo(a) aluno(a) adicionado(a) para a lista de pagamentos de "+ListaDeAlunosPagamentos.mesDePagamento);
+                caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        CadastrarAlunoActivity.this.finish();
+                        startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosPagamentos.class));
+                    }
+                });
+                caixaDeDialogo.create();
+                caixaDeDialogo.show();
+            }
         }else{
             EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeCompletoAluno);
             Spinner comboBoxSelecionarInstituicao = findViewById(R.id.comboBoxSelecionarInstituicaoAluno);
@@ -111,7 +113,7 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
 
             verifica = new Verifica();
 
-            if(verifica.aluno(campoNomeCompletoAluno.getText().toString(), comboBoxSelecionarInstituicao.getSelectedItem().toString(), this) == true){
+            if(verifica.aluno(campoNomeCompletoAluno.getText().toString(), comboBoxSelecionarInstituicao.getSelectedItem().toString(), campoCPFAluno.getText().toString(), campoEmailAluno.getText().toString(), this) ){
                 aluno.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
                 aluno.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
                 aluno.setCpf(campoCPFAluno.getText().toString());

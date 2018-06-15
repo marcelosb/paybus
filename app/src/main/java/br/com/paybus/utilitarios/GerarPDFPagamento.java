@@ -53,6 +53,23 @@ public class GerarPDFPagamento {
         visualizarPDF();
     }
 
+    public void criarPDFComprovanteDePagamentoAluno(Pagamento pagamento) {
+        criarDocumentoVazio();
+        addMetaDados();
+        addTituloDocumento(pagamento.getMesEAnoDoPagamento());
+        addTextoParagrafo("Motorista: "+pagamento.getNomeDoMotorista());
+        addTextoParagrafo("Cobrador: "+pagamento.getNomeDoCobrador());
+        addTextoParagrafo("Estudante: "+pagamento.getNomeDoAluno());
+        addTextoParagrafo("Instituição de Ensino: "+pagamento.getInstituicaoDeEnsinoDoAluno());
+        addTextoParagrafo("Data do Pagamento: "+pagamento.getDataDoPagamento());
+        addTextoParagrafo("Data de Vencimento: "+pagamento.getDataDoVencimento());
+        addTextoParagrafo("Valor do pagamento: "+pagamento.getValorDoPagamento().toString());
+        addTextoParagrafo("Observação: "+pagamento.getObservacao());
+        addParagrafosCentralizado("Muito Obrigado");
+        fecharDocumento();
+        //visualizarPDF();
+    }
+
     public void criarDocumentoVazio(){
         criarPasta();
         try{

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,17 +31,19 @@ import br.com.paybus.modelo.Motorista;
 import br.com.paybus.modelo.Pagamento;
 import br.com.paybus.modelo.Pagamentos;
 import br.com.paybus.utilitarios.GerarPDFPagamento;
+import br.com.paybus.utilitarios.PagamentoAlunoRecyclerViewAdapter;
+import br.com.paybus.utilitarios.PainelDeDialogo;
 
 public class ReceberPagamentoActivity extends AppCompatActivity {
 
     //importante!!  este objeto deve ser global para entrar nos metodos
     GerarPDFPagamento gerarPDF;
+
     //importante!!  esta variavel deve ser global para entar nos metodos
     Pagamentos pagamentos;
 
     //codigo para pedido de permissao
     public static final int REQUEST_PERMISSIONS_CODE = 128;
-
 
     List<String> listaCobradorPagamento;
     List<Cobrador> listaCobrador;
@@ -49,7 +52,6 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
     List<String> listaMotoristaPagamento;
     List<Motorista> listaMotorista;
     MotoristaDAO motoristaDAO;
-
 
     PagamentoDAO pagamentoDAO;
     Pagamento pagamento;
@@ -100,6 +102,48 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
         arrayAdapterMotorista.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         comboBoxMotorista.setAdapter(arrayAdapterMotorista);
 
+
+        if(PagamentoAlunoRecyclerViewAdapter.editarPagamento) {
+            Button botaoEditarReceberPagamento = findViewById(R.id.botaoEditarReceberPagamento);
+            botaoEditarReceberPagamento.setText("EDITAR PAGAMENTO");
+            this.setTitle("Editar Pagamento");
+
+            String selecaoCobrador = getIntent().getStringExtra("cobrador_selecao");
+            for(int i=0; i<comboBoxCobrador.getCount(); i++){
+                comboBoxCobrador.setSelection(i);
+                if(comboBoxCobrador.getSelectedItem().toString().equals(selecaoCobrador)){
+                    comboBoxCobrador.setSelection(i);
+                    break;
+                }
+            }
+
+            String selecaoMotorista = getIntent().getStringExtra("motorista_selecao");
+            for(int i=0; i<comboBoxMotorista.getCount(); i++){
+                comboBoxMotorista.setSelection(i);
+                if(comboBoxMotorista.getSelectedItem().toString().equals(selecaoMotorista)){
+                    comboBoxMotorista.setSelection(i);
+                    break;
+                }
+            }
+
+            Double valorPag = getIntent().getDoubleExtra("valor_pagamento", -1.0);
+            EditText valorAlunoPagamento = findViewById(R.id.campoValorAlunoPagamento);
+            valorAlunoPagamento.setText(String.valueOf(valorPag.intValue()));
+
+            String observacaoEdit = getIntent().getStringExtra("observacao_pagamento");
+            EditText observacaoAlunoPagamento = findViewById(R.id.campoObservacaoAlunoPagamento);
+            observacaoAlunoPagamento.setText(observacaoEdit);
+
+
+        }else if(PagamentoAlunoRecyclerViewAdapter.editarPagamento == false){
+            Button botaoEditarReceberPagamento = findViewById(R.id.botaoEditarReceberPagamento);
+            botaoEditarReceberPagamento.setText("RECEBER PAGAMENTO");
+            this.setTitle("Receber Pagamento");
+
+            comboBoxMotorista.setSelection(0);
+            comboBoxCobrador.setSelection(0);
+        }
+
     }
 
     @Override
@@ -115,56 +159,140 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
 
     public void botaoRealizarPagamentoDoAlunoSelecionado(View view){
 
-        int idPagamento = getIntent().getIntExtra("id_pagamento", -1);
-        pagamento.setId(idPagamento);
+        if(PagamentoAlunoRecyclerViewAdapter.editarPagamento){
 
-        String mesAnoPagamento = getIntent().getStringExtra("mes_e_ano_do_pagamento");
-        pagamento.setMesEAnoDoPagamento(mesAnoPagamento);
+            PagamentoAlunoRecyclerViewAdapter.editarPagamento = false;
 
-        pagamento.setDataDoPagamento(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+            int idPagamento = getIntent().getIntExtra("id_pagamento", -1);
+            pagamento.setId(idPagamento);
 
-        String dataVencimento = getIntent().getStringExtra("data_do_vencimento");
-        pagamento.setDataDoVencimento(dataVencimento);
+            String mesAnoPagamento = getIntent().getStringExtra("mes_e_ano_do_pagamento");
+            pagamento.setMesEAnoDoPagamento(mesAnoPagamento);
 
-        pagamento.setNomeDoCobrador(comboBoxCobrador.getSelectedItem().toString());
+            pagamento.setDataDoPagamento(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
 
-        pagamento.setNomeDoMotorista(comboBoxMotorista.getSelectedItem().toString());
+            String dataVencimento = getIntent().getStringExtra("data_do_vencimento");
+            pagamento.setDataDoVencimento(dataVencimento);
 
-        pagamento.setStatus("Pago");
+            pagamento.setNomeDoCobrador(comboBoxCobrador.getSelectedItem().toString());
 
-        EditText valorAlunoPagamento = findViewById(R.id.campoValorAlunoPagamento);
-        Double valorPagamento = Double.parseDouble(valorAlunoPagamento.getText().toString());
-        pagamento.setValorDoPagamento(valorPagamento);
+            pagamento.setNomeDoMotorista(comboBoxMotorista.getSelectedItem().toString());
 
-        EditText observacaoAlunoPagamento = findViewById(R.id.campoObservacaoAlunoPagamento);
-        pagamento.setObservacao(observacaoAlunoPagamento.getText().toString());
+            pagamento.setStatus("Pago");
 
-        pagamentoDAO = new PagamentoDAO(this);
-        pagamentoDAO.atualizarPagamento(pagamento);
+            EditText observacaoAlunoPagamento = findViewById(R.id.campoObservacaoAlunoPagamento);
+            pagamento.setObservacao(observacaoAlunoPagamento.getText().toString());
 
-        //iniciando a variavel gerar pdf
-        gerarPDF = new GerarPDFPagamento(getApplicationContext());
-        //inicinado o objeto pagamento
-        //pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
+            EditText valorAlunoPagamento = findViewById(R.id.campoValorAlunoPagamento);
 
-        AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentoActivity.this);
-        caixaDeDialogo.setCancelable(false);
-        caixaDeDialogo.setTitle("Mensagem");
-        caixaDeDialogo.setMessage("Pagamento realizado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
-        caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialogInterface, int i) {
-                chamarPermissaoGravacao(pagamento);
+            if(pagamento.getNomeDoCobrador().equals("Selecione o(a) cobrador(a)")){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Selecione um cobrador." , this);
+            }else if(pagamento.getNomeDoMotorista().equals("Selecione o Motorista")){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Selecione um motorista." , this);
             }
-        });
-        caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialogInterface, int i) {
-                ReceberPagamentoActivity.this.finish();
-                startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+            else if(valorAlunoPagamento.getText().toString().isEmpty()){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Insira o valor do pagamento." , this);
+            }else{
+
+                Double valorPagamento = Double.parseDouble(valorAlunoPagamento.getText().toString());
+                pagamento.setValorDoPagamento(valorPagamento);
+
+                pagamentoDAO = new PagamentoDAO(this);
+                pagamentoDAO.atualizarPagamento(pagamento);
+
+                //iniciando a variavel gerar pdf
+                gerarPDF = new GerarPDFPagamento(getApplicationContext());
+                //inicinado o objeto pagamento
+                //pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
+
+                AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentoActivity.this);
+                caixaDeDialogo.setCancelable(false);
+                caixaDeDialogo.setTitle("Mensagem");
+                caixaDeDialogo.setMessage("Pagamento editado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
+                caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        chamarPermissaoGravacao(pagamento);
+                    }
+                });
+                caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        ReceberPagamentoActivity.this.finish();
+                        startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+                    }
+                });
+                caixaDeDialogo.create();
+                caixaDeDialogo.show();
             }
-        });
-        caixaDeDialogo.create();
-        caixaDeDialogo.show();
+
+
+        }else{
+
+            int idPagamento = getIntent().getIntExtra("id_pagamento", -1);
+            pagamento.setId(idPagamento);
+
+            String mesAnoPagamento = getIntent().getStringExtra("mes_e_ano_do_pagamento");
+            pagamento.setMesEAnoDoPagamento(mesAnoPagamento);
+
+            pagamento.setDataDoPagamento(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+
+            String dataVencimento = getIntent().getStringExtra("data_do_vencimento");
+            pagamento.setDataDoVencimento(dataVencimento);
+
+            pagamento.setNomeDoCobrador(comboBoxCobrador.getSelectedItem().toString());
+
+            pagamento.setNomeDoMotorista(comboBoxMotorista.getSelectedItem().toString());
+
+            pagamento.setStatus("Pago");
+
+            EditText observacaoAlunoPagamento = findViewById(R.id.campoObservacaoAlunoPagamento);
+            pagamento.setObservacao(observacaoAlunoPagamento.getText().toString());
+
+            EditText valorAlunoPagamento = findViewById(R.id.campoValorAlunoPagamento);
+
+            if(pagamento.getNomeDoCobrador().equals("Selecione o(a) cobrador(a)")){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Selecione um cobrador." , this);
+            }else if(pagamento.getNomeDoMotorista().equals("Selecione o Motorista")){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Selecione um motorista." , this);
+            }
+            else if(valorAlunoPagamento.getText().toString().isEmpty()){
+                new PainelDeDialogo().mostrarMensagemDeErro("Erro","Insira o valor do pagamento." , this);
+            }
+            else{
+
+                Double valorPagamento = Double.parseDouble(valorAlunoPagamento.getText().toString());
+                pagamento.setValorDoPagamento(valorPagamento);
+
+                pagamentoDAO = new PagamentoDAO(this);
+                pagamentoDAO.atualizarPagamento(pagamento);
+
+                //iniciando a variavel gerar pdf
+                gerarPDF = new GerarPDFPagamento(getApplicationContext());
+                //inicinado o objeto pagamento
+                //pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
+
+                AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(ReceberPagamentoActivity.this);
+                caixaDeDialogo.setCancelable(false);
+                caixaDeDialogo.setTitle("Mensagem");
+                caixaDeDialogo.setMessage("Pagamento realizado com sucesso!\n\nDeseja gerar o comprovante de pagamento?");
+                caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        chamarPermissaoGravacao(pagamento);
+                    }
+                });
+                caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        ReceberPagamentoActivity.this.finish();
+                        startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+                    }
+                });
+                caixaDeDialogo.create();
+                caixaDeDialogo.show();
+            }
+
+        }
+
     }
+
 
 
     //metodo que faz a verificação se ja tem permissao ou não para gravação e criação na memoria

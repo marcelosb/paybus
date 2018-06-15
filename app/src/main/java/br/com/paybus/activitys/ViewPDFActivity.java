@@ -1,7 +1,9 @@
 package br.com.paybus.activitys;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.github.barteksc.pdfviewer.PDFView;
 
@@ -27,4 +29,10 @@ public class ViewPDFActivity extends AppCompatActivity {
 
         pdfView.fromFile(file).enableSwipe(true).swipeHorizontal(false).enableDoubletap(true).enableAntialiasing(true).load();
     }
+
+    public void botaoVoltarDaTelaViewPdfParaListaDeAlunosPagamentos(View view){
+        startActivity(new Intent(ViewPDFActivity.this, ListaDeAlunosPagamentos.class));
+    }
+
+
 }

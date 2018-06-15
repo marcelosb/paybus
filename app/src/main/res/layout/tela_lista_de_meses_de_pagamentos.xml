@@ -13,13 +13,14 @@
     <Button
         android:id="@+id/botaoCadNovoMesDePagamento"
         style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="272dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/botao_customizado"
         android:onClick="botaoCriarNovoMesDePagamento"
         android:text="CRIAR NOVO MÊS DE PAGAMENTO"
         android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

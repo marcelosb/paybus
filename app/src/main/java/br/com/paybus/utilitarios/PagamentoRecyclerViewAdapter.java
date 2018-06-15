@@ -151,37 +151,40 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
                         switch (item.getItemId()){
                             case R.id.popup_editar:
 
-                                //Intent intent = new Intent(context, EditarAlunoActivity.class);
-
-
-                                //context.startActivity(intent);
+                                Intent intent = new Intent(context, EditarNovoMesDePagamentoActivity.class);
+                                intent.putExtra("id_mes_pagamento", listaDeMesesDePagamentos.get(position).getId());
+                                mesPagamento = holder.textoMesDePagamento.getText().toString();
+                                ((ListarPagamentos) context).finish();
+                                context.startActivity(intent);
 
                                 break;
                             case R.id.popup_deletar:
 
-                                // AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
-                                // caixaDeDialogo.setCancelable(false);
-                                //caixaDeDialogo.setTitle("Confirmar");
-                                //caixaDeDialogo.setMessage("Deseja realmente excluir "+listaDeAlunos.get(position).getNomeCompleto()+
-                                //         "? Que Estuda na "+listaDeAlunos.get(position).getInstituicao()+"?");
+                                AlertDialog.Builder caixaDeDialogoLongClick = new AlertDialog.Builder(context);
+                                caixaDeDialogoLongClick.setCancelable(false);
+                                caixaDeDialogoLongClick.setTitle("Confirmar");
+                                caixaDeDialogoLongClick.setMessage("Deseja realmente excluir o pagamento do mês de "+listaDeMesesDePagamentos.get(position).getMesEAnoDoPagamento()+
+                                        "?");
+                                caixaDeDialogoLongClick.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.cancel();
+                                    }
+                                });
+                                caixaDeDialogoLongClick.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                        MesDoPagamentoDAO dao = new MesDoPagamentoDAO(context);
+                                        dao.deletarMesDoPagamento(listaDeMesesDePagamentos.get(position));
 
-                                //caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                //  @Override public void onClick(DialogInterface dialogInterface, int i) {
-                                //       dialogInterface.cancel();
-                                //    }
-                                //});
+                                        PagamentoDAO pagamentoDAO = new PagamentoDAO(context);
+                                        pagamentoDAO.deletarMesDePagamento(listaDeMesesDePagamentos.get(position).getMesEAnoDoPagamento());
 
-                                // caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                //   @Override public void onClick(DialogInterface dialogInterface, int i) {
-                                //    AlunoDAO dao = new AlunoDAO(context);
-                                //    dao.deletarAluno(listaDeAlunos.get(position));
-                                //   context.startActivity(new Intent(context, ListaDeAlunosActivity.class));
-
-                                //   }
-                            //  });
-
-                        // caixaDeDialogo.create();
-                        //caixaDeDialogo.show();
+                                        ((ListarPagamentos) context).finish();
+                                        context.startActivity(new Intent(context, ListarPagamentos.class));
+                                    }
+                                });
+                                caixaDeDialogoLongClick.create();
+                                caixaDeDialogoLongClick.show();
 
 
                                 break;

@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/textoNomeCobrador"
-            android:layout_width="0dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/textoInstituicaoCobrador"
-            android:layout_width="0dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
@@ -52,8 +52,8 @@
 
         <TextView
             android:id="@+id/textoMenuNeverCobrador"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"
             android:layout_marginTop="1dp"

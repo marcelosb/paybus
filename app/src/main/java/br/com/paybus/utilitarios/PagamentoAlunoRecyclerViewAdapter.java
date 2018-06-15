@@ -23,7 +23,10 @@ import br.com.paybus.activitys.ReceberPagamentoActivity;
 import br.com.paybus.dao.PagamentoDAO;
 import br.com.paybus.modelo.Pagamento;
 
+
 public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<PagamentoAlunoRecyclerViewAdapter.ViewHolderPagamentoAluno>   {
+
+    public static boolean editarPagamento = false;
 
     List<Pagamento> listaDePagamentosAlunos;
     Context context;
@@ -36,6 +39,7 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
     @NonNull
     @Override
     public PagamentoAlunoRecyclerViewAdapter.ViewHolderPagamentoAluno onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.layout_lista_pagamentos_alunos_recycler_view, parent, false);
         return new ViewHolderPagamentoAluno(view);
@@ -68,6 +72,66 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
             holder.textoMenuNeverAlunoPagamento.setTextColor(Color.parseColor("#016601"));
             holder.imagemAlunoPagamento.setImageResource(R.drawable.aluno_pagamento_pago);
 
+            holder.textoMenuNeverAlunoPagamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PopupMenu popupMenuNever = new PopupMenu(context, holder.textoMenuNeverAlunoPagamento);
+                    popupMenuNever.inflate(R.menu.menu_popup_pagamento_aluno);
+                    popupMenuNever.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch (item.getItemId()){
+                                case R.id.popup_editar_pagamento_aluno:
+                                    editarPagamento = true;
+                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                                    intent.putExtra("cobrador_selecao", listaDePagamentosAlunos.get(position).getNomeDoCobrador());
+                                    intent.putExtra("motorista_selecao", listaDePagamentosAlunos.get(position).getNomeDoMotorista());
+                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                                    //((ListaDeAlunosPagamentos) context).finish();
+                                    context.startActivity(intent);
+                                    break;
+                                case R.id.popup_deletar_pagamento_aluno:
+                                    AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
+                                    caixaDeDialogo.setCancelable(false);
+                                    caixaDeDialogo.setTitle("Confirmar");
+                                    caixaDeDialogo.setMessage("Deseja realmente excluir o(a) aluno(a): "+listaDePagamentosAlunos.get(position).getNomeDoAluno()+
+                                            "?\n\nQue já realizou o pagamento do mês, e estuda no(a) "+listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno()+"?");
+                                    caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                        @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.cancel();
+                                        }
+                                    });
+                                    caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                        @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                            PagamentoDAO dao = new PagamentoDAO(context);
+                                            dao.deletarPagamento(listaDePagamentosAlunos.get(position));
+                                            ((ListaDeAlunosPagamentos) context).finish();
+                                            context.startActivity(new Intent(context, ListaDeAlunosPagamentos.class));
+                                        }
+                                    });
+                                    caixaDeDialogo.create();
+                                    caixaDeDialogo.show();
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                            return true;
+                        }
+                    });
+                    popupMenuNever.show();
+
+                }
+
+            });
+
+
         }else if(listaDePagamentosAlunos.get(position).getStatus().equals("Não Pago")){
             holder.textoNomeAlunoPagamento.setText(listaDePagamentosAlunos.get(position).getNomeDoAluno());
             holder.textoInstituicaoAlunoPagamento.setText(listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
@@ -79,6 +143,7 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
             holder.textoNomeAlunoPagamento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    editarPagamento = false;
                     Intent intent = new Intent(context, ReceberPagamentoActivity.class);
                     intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
                     intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
@@ -90,11 +155,13 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                     //((ListaDeAlunosPagamentos) context).finish();
                     context.startActivity(intent);
                 }
+
             });
 
             holder.textoInstituicaoAlunoPagamento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    editarPagamento = false;
                     Intent intent = new Intent(context, ReceberPagamentoActivity.class);
                     intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
                     intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
@@ -111,6 +178,7 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
             holder.imagemAlunoPagamento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    editarPagamento = false;
                     Intent intent = new Intent(context, ReceberPagamentoActivity.class);
                     intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
                     intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
@@ -134,6 +202,17 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                         public boolean onMenuItemClick(MenuItem item) {
                             switch (item.getItemId()){
                                 case R.id.popup_editar_pagamento_aluno:
+                                    editarPagamento = false;
+                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
+                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
+                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
+                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
+                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
+                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
+                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
+                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
+                                    //((ListaDeAlunosPagamentos) context).finish();
+                                    context.startActivity(intent);
                                     break;
                                 case R.id.popup_deletar_pagamento_aluno:
                                     AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
@@ -157,18 +236,6 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                     caixaDeDialogo.create();
                                     caixaDeDialogo.show();
                                     break;
-                                case R.id.popup_fazer_pagamento_aluno:
-                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
-                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
-                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
-                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
-                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
-                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
-                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
-                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                                    //((ListaDeAlunosPagamentos) context).finish();
-                                    context.startActivity(intent);
-                                    break;
                                 default:
                                     break;
                             }
@@ -181,71 +248,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
 
             });
 
-
-            // aqui faz a parte do clique longo
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
-                @Override
-                public boolean onLongClick( View v) {
-                    PopupMenu popupMenu = new PopupMenu(context, holder.textoMenuNeverAlunoPagamento);
-                    popupMenu.inflate(R.menu.menu_popup_pagamento_aluno);
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            switch (item.getItemId()){
-                                case R.id.popup_editar_pagamento_aluno:
-                                    //Intent intent = new Intent(context, EditarAlunoActivity.class);
-                                    //context.startActivity(intent);
-                                    break;
-                                case R.id.popup_deletar_pagamento_aluno:
-
-                                    AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
-                                    caixaDeDialogo.setCancelable(false);
-                                    caixaDeDialogo.setTitle("Confirmar");
-                                    caixaDeDialogo.setMessage("Deseja realmente excluir o pagamento do(a) aluno(a): "+listaDePagamentosAlunos.get(position).getNomeDoAluno()+
-                                            "?\nQue Estuda na "+listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno()+"?");
-                                    caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                        @Override public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.cancel();
-                                        }
-                                    });
-                                    caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                        @Override public void onClick(DialogInterface dialogInterface, int i) {
-                                            PagamentoDAO dao = new PagamentoDAO(context);
-                                            dao.deletarPagamento(listaDePagamentosAlunos.get(position));
-                                            ((ListaDeAlunosPagamentos) context).finish();
-                                            context.startActivity(new Intent(context, ListaDeAlunosPagamentos.class));
-                                        }
-                                    });
-                                    caixaDeDialogo.create();
-                                    caixaDeDialogo.show();
-                                    break;
-                                case R.id.popup_fazer_pagamento_aluno:
-                                    Intent intent = new Intent(context, ReceberPagamentoActivity.class);
-                                    intent.putExtra("id_pagamento", listaDePagamentosAlunos.get(position).getId());
-                                    intent.putExtra("mes_e_ano_do_pagamento", listaDePagamentosAlunos.get(position).getMesEAnoDoPagamento());
-                                    intent.putExtra("data_do_vencimento", listaDePagamentosAlunos.get(position).getDataDoVencimento());
-                                    intent.putExtra("nome_aluno_pagamento", listaDePagamentosAlunos.get(position).getNomeDoAluno());
-                                    intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
-                                    intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
-                                    intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                                    //((ListaDeAlunosPagamentos) context).finish();
-                                    context.startActivity(intent);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            return true;
-                        }
-                    });
-                    popupMenu.show();
-
-                    return true;
-                }
-
-            });
-
-
         }
+
 
     }
 

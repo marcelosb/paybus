@@ -14,46 +14,31 @@
     tools:layout_editor_absoluteY="8dp">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="40dp"
+            android:id="@+id/imagemMesComprovanteDePagamento"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:background="@drawable/calendario"
+            android:background="@drawable/comprovante_de_pagamento"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textoMesDePagamento"
-            android:layout_width="280dp"
+            android:id="@+id/textoMesComprovanteDePagamento"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:paddingLeft="0dp"
             android:paddingTop="0dp"
-            android:text="Setembro de 2018"
+            android:text="Outubro de 2018"
             android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textoMenuNeverPagamento"
-            android:layout_width="25dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="&#8942;"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imagemMesComprovanteDePagamento"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/divisor"
+            android:id="@+id/divisorComprovantePagamento"
             android:layout_width="0dp"
             android:layout_height="0.5dp"
             android:layout_marginStart="0dp"
