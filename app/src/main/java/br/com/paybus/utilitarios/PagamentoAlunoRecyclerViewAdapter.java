@@ -93,8 +93,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                     intent.putExtra("motorista_selecao", listaDePagamentosAlunos.get(position).getNomeDoMotorista());
                                     intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
                                     intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                                    //((ListaDeAlunosPagamentos) context).finish();
                                     context.startActivity(intent);
+                                    ((ListaDeAlunosPagamentos) context).finish();
                                     break;
                                 case R.id.popup_deletar_pagamento_aluno:
                                     AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
@@ -111,8 +111,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                         @Override public void onClick(DialogInterface dialogInterface, int i) {
                                             PagamentoDAO dao = new PagamentoDAO(context);
                                             dao.deletarPagamento(listaDePagamentosAlunos.get(position));
-                                            ((ListaDeAlunosPagamentos) context).finish();
                                             context.startActivity(new Intent(context, ListaDeAlunosPagamentos.class));
+                                            ((ListaDeAlunosPagamentos) context).finish();
                                         }
                                     });
                                     caixaDeDialogo.create();
@@ -152,8 +152,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                     intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
                     intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
                     intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                    //((ListaDeAlunosPagamentos) context).finish();
                     context.startActivity(intent);
+                    ((ListaDeAlunosPagamentos) context).finish();
                 }
 
             });
@@ -170,8 +170,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                     intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
                     intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
                     intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                    //((ListaDeAlunosPagamentos) context).finish();
                     context.startActivity(intent);
+                    ((ListaDeAlunosPagamentos) context).finish();
                 }
             });
 
@@ -187,8 +187,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                     intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
                     intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
                     intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                    //((ListaDeAlunosPagamentos) context).finish();
                     context.startActivity(intent);
+                    ((ListaDeAlunosPagamentos) context).finish();
                 }
             });
 
@@ -211,8 +211,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                     intent.putExtra("instituicao_aluno_pagamento", listaDePagamentosAlunos.get(position).getInstituicaoDeEnsinoDoAluno());
                                     intent.putExtra("valor_pagamento", listaDePagamentosAlunos.get(position).getValorDoPagamento());
                                     intent.putExtra("observacao_pagamento", listaDePagamentosAlunos.get(position).getObservacao());
-                                    //((ListaDeAlunosPagamentos) context).finish();
                                     context.startActivity(intent);
+                                    ((ListaDeAlunosPagamentos) context).finish();
                                     break;
                                 case R.id.popup_deletar_pagamento_aluno:
                                     AlertDialog.Builder caixaDeDialogo = new AlertDialog.Builder(context);
@@ -229,8 +229,8 @@ public class PagamentoAlunoRecyclerViewAdapter extends RecyclerView.Adapter<Paga
                                         @Override public void onClick(DialogInterface dialogInterface, int i) {
                                             PagamentoDAO dao = new PagamentoDAO(context);
                                             dao.deletarPagamento(listaDePagamentosAlunos.get(position));
-                                            ((ListaDeAlunosPagamentos) context).finish();
                                             context.startActivity(new Intent(context, ListaDeAlunosPagamentos.class));
+                                            ((ListaDeAlunosPagamentos) context).finish();
                                         }
                                     });
                                     caixaDeDialogo.create();

@@ -15,6 +15,7 @@ import br.com.paybus.R;
 import br.com.paybus.dao.MesDoPagamentoDAO;
 import br.com.paybus.modelo.MesDoPagamento;
 import br.com.paybus.utilitarios.PagamentoRecyclerViewAdapter;
+import br.com.paybus.utilitarios.Usuario;
 
 public class ListarPagamentos extends AppCompatActivity {
 
@@ -37,7 +38,12 @@ public class ListarPagamentos extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                if(Usuario.tipo.equals("admin")){
+                    startActivity(new Intent(ListarPagamentos.this, PainelDeControleAdminActivity.class));
+                }else if(Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
+                    startActivity(new Intent(ListarPagamentos.this, PainelDeControleMotoristaCobradorActivity.class));
+                }
+                ListarPagamentos.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -56,8 +62,8 @@ public class ListarPagamentos extends AppCompatActivity {
     }
 
     public void botaoCriarNovoMesDePagamento(View view){
-        ListarPagamentos.this.finish();
         startActivity(new Intent(ListarPagamentos.this, CadastrarNovoMesDePagamento.class ));
+        ListarPagamentos.this.finish();
     }
 
 

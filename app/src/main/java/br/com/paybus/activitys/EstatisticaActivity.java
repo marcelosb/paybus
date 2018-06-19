@@ -76,8 +76,8 @@ public class EstatisticaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                EstatisticaActivity.this.finish();
                 startActivity(new Intent(EstatisticaActivity.this, ListaDeAlunosPagamentos.class));
+                EstatisticaActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

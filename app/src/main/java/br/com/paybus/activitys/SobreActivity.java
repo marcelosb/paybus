@@ -1,10 +1,12 @@
 package br.com.paybus.activitys;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import br.com.paybus.R;
+import br.com.paybus.utilitarios.Usuario;
 
 public class SobreActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class SobreActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                startActivity(new Intent(SobreActivity.this, ViewPDFAjudaActivity.class));
                 SobreActivity.this.finish();
                 return true;
         }

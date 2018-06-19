@@ -1,5 +1,6 @@
 package br.com.paybus.activitys;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,6 +41,7 @@ public class ParteFinanceiraActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                startActivity(new Intent(ParteFinanceiraActivity.this, PainelDeControleAdminActivity.class));
                 ParteFinanceiraActivity.this.finish();
                 return true;
         }

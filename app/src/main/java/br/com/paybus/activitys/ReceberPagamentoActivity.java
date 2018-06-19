@@ -150,8 +150,8 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
                 ReceberPagamentoActivity.this.finish();
-                //startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -212,12 +212,13 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                         chamarPermissaoGravacao(pagamento);
+                        ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        ReceberPagamentoActivity.this.finish();
                         startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+                        ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -277,12 +278,13 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                         chamarPermissaoGravacao(pagamento);
+                        ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        ReceberPagamentoActivity.this.finish();
                         startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+                        ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -292,7 +294,6 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     //metodo que faz a verificação se ja tem permissao ou não para gravação e criação na memoria

@@ -114,9 +114,21 @@
             android:name=".activitys.EstatisticaActivity"
             android:label="Estatísticas do Mês"
             android:screenOrientation="portrait" />
-        <activity android:name=".activitys.VisualizarComprovanteDePagamentoAlunoActivity" />
-        <activity android:name=".activitys.ViewPDFAjudaAdminActivity" />
-        <activity android:name=".activitys.ParteFinanceiraActivity"></activity>
+
+        <activity
+            android:name=".activitys.VisualizarComprovanteDePagamentoAlunoActivity"
+            android:label="Comprovante de Pagamento"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activitys.ViewPDFAjudaActivity"
+            android:label="Manual de Ajuda Administrador"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activitys.ParteFinanceiraActivity"
+            android:label="Parte Financeira"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -63,7 +63,8 @@ public class EditarMotoristaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(EditarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+                EditarMotoristaActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -96,8 +97,8 @@ public class EditarMotoristaActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Alteração realizada com sucesso!");
         caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
                 startActivity(new Intent(EditarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+                EditarMotoristaActivity.this.finish();
             }
         });
         caixaDeDialogo.create();

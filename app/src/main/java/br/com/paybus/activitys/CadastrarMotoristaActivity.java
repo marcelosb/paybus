@@ -37,8 +37,8 @@ public class CadastrarMotoristaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
                 startActivity(new Intent(CadastrarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+                CadastrarMotoristaActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -76,8 +76,8 @@ public class CadastrarMotoristaActivity extends AppCompatActivity {
             caixaDeDialogo.setMessage("Cadastro realizado com sucesso");
             caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
                     startActivity(new Intent(CadastrarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+                    CadastrarMotoristaActivity.this.finish();
                 }
             });
             caixaDeDialogo.create();

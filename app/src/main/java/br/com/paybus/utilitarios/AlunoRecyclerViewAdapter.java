@@ -84,8 +84,8 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                 intent.putExtra("telefone_aluno", listaDeAlunos.get(position).getTelefone());
                                 intent.putExtra("email_aluno", listaDeAlunos.get(position).getEmail());
 
-                                ((ListaDeAlunosActivity) context).finish();
                                 context.startActivity(intent);
+                                ((ListaDeAlunosActivity) context).finish();
 
                                 break;
 
@@ -105,8 +105,8 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                         AlunoDAO dao = new AlunoDAO(context);
                                         dao.deletarAluno(listaDeAlunos.get(position));
 
-                                        ((ListaDeAlunosActivity) context).finish();
                                         context.startActivity(new Intent(context, ListaDeAlunosActivity.class));
+                                        ((ListaDeAlunosActivity) context).finish();
 
                                     }
                                 });
@@ -150,8 +150,8 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                 intent.putExtra("telefone_aluno", listaDeAlunos.get(position).getTelefone());
                                 intent.putExtra("email_aluno", listaDeAlunos.get(position).getEmail());
 
-                                ((ListaDeAlunosActivity) context).finish();
                                 context.startActivity(intent);
+                                ((ListaDeAlunosActivity) context).finish();
 
                             break;
 
@@ -171,8 +171,8 @@ public class AlunoRecyclerViewAdapter extends RecyclerView.Adapter<AlunoRecycler
                                         AlunoDAO dao = new AlunoDAO(context);
                                         dao.deletarAluno(listaDeAlunos.get(position));
 
-                                        ((ListaDeAlunosActivity) context).finish();
                                         context.startActivity(new Intent(context, ListaDeAlunosActivity.class));
+                                        ((ListaDeAlunosActivity) context).finish();
 
                                         /**
                                         notifyItemRemoved(position);

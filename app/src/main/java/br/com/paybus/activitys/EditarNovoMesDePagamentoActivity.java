@@ -50,8 +50,8 @@ public class EditarNovoMesDePagamentoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                EditarNovoMesDePagamentoActivity.this.finish();
                 startActivity(new Intent(EditarNovoMesDePagamentoActivity.this, ListarPagamentos.class));
+                EditarNovoMesDePagamentoActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -119,8 +119,8 @@ public class EditarNovoMesDePagamentoActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Mês de pagamento alterado com sucesso");
         caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                EditarNovoMesDePagamentoActivity.this.finish();
                 startActivity(new Intent(EditarNovoMesDePagamentoActivity.this, ListarPagamentos.class));
+                EditarNovoMesDePagamentoActivity.this.finish();
             }
         });
         caixaDeDialogo.create();

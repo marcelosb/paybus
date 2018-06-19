@@ -20,6 +20,8 @@ public class ViewPDFActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_view_pdf);
+        setTitle("Comprovante de Pagamento");
+
         pdfView=(PDFView)findViewById(R.id.pdfView);
 
         Bundle bundle = getIntent().getExtras();
@@ -32,6 +34,7 @@ public class ViewPDFActivity extends AppCompatActivity {
 
     public void botaoVoltarDaTelaViewPdfParaListaDeAlunosPagamentos(View view){
         startActivity(new Intent(ViewPDFActivity.this, ListaDeAlunosPagamentos.class));
+        ViewPDFActivity.this.finish();
     }
 
 

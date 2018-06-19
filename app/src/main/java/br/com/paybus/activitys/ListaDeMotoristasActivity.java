@@ -37,7 +37,8 @@ public class ListaDeMotoristasActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(ListaDeMotoristasActivity.this, UsuariosActivity.class));
+                ListaDeMotoristasActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -67,8 +68,8 @@ public class ListaDeMotoristasActivity extends AppCompatActivity {
     }
 
     public void irParaCadastrarMotorista(View view){
-        finish();
         startActivity(new Intent(ListaDeMotoristasActivity.this, CadastrarMotoristaActivity.class));
+        ListaDeMotoristasActivity.this.finish();
     }
 
 }

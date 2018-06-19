@@ -21,6 +21,7 @@ import br.com.paybus.R;
 import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.modelo.Aluno;
 import br.com.paybus.utilitarios.AlunoRecyclerViewAdapter;
+import br.com.paybus.utilitarios.Usuario;
 
 public class ListaDeAlunosActivity extends AppCompatActivity{
 
@@ -61,8 +62,12 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                if(Usuario.tipo.equals("admin")){
+                    startActivity(new Intent(ListaDeAlunosActivity.this, UsuariosActivity.class));
+                }else if( Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
+                    startActivity(new Intent(ListaDeAlunosActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+                }
                 ListaDeAlunosActivity.this.finish();
-                //NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -92,8 +97,8 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
     }
 
     public void irParaCadastrarAluno(View view){
-        ListaDeAlunosActivity.this.finish();
         startActivity(new Intent(ListaDeAlunosActivity.this, CadastrarAlunoActivity.class));
+        ListaDeAlunosActivity.this.finish();
     }
 
 }

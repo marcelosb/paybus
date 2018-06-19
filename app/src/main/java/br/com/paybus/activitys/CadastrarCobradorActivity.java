@@ -38,7 +38,8 @@ public class CadastrarCobradorActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(CadastrarCobradorActivity.this, ListaDeCobradoresActivity.class));
+                CadastrarCobradorActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -75,8 +76,8 @@ public class CadastrarCobradorActivity extends AppCompatActivity {
             caixaDeDialogo.setMessage("Cadastro realizado com sucesso");
             caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
                     startActivity(new Intent(CadastrarCobradorActivity.this, ListaDeCobradoresActivity.class));
+                    CadastrarCobradorActivity.this.finish();
                 }
             });
             caixaDeDialogo.create();

@@ -17,6 +17,7 @@ import java.util.List;
 
 import br.com.paybus.R;
 import br.com.paybus.activitys.EditarCobradorActivity;
+import br.com.paybus.activitys.ListaDeAlunosActivity;
 import br.com.paybus.activitys.ListaDeCobradoresActivity;
 import br.com.paybus.dao.CobradorDAO;
 import br.com.paybus.modelo.Cobrador;
@@ -84,6 +85,7 @@ public class CobradorRecyclerViewAdapter extends RecyclerView.Adapter<CobradorRe
                                 intent.putExtra("telefone_cobrador", listaDeCobradores.get(position).getTelefone());
                                 intent.putExtra("email_cobrador", listaDeCobradores.get(position).getEmail());
                                 context.startActivity(intent);
+                                ((ListaDeCobradoresActivity) context).finish();
                                 break;
 
                             case R.id.popup_deletar:
@@ -104,6 +106,7 @@ public class CobradorRecyclerViewAdapter extends RecyclerView.Adapter<CobradorRe
                                         CobradorDAO dao = new CobradorDAO(context);
                                         dao.deletarCobrador(listaDeCobradores.get(position));
                                         context.startActivity(new Intent(context, ListaDeCobradoresActivity.class));
+                                        ((ListaDeCobradoresActivity) context).finish();
                                     }
                                 });
 
@@ -148,8 +151,8 @@ public class CobradorRecyclerViewAdapter extends RecyclerView.Adapter<CobradorRe
                                 intent.putExtra("telefone_cobrador", listaDeCobradores.get(position).getTelefone());
                                 intent.putExtra("email_cobrador", listaDeCobradores.get(position).getEmail());
 
-                                ((ListaDeCobradoresActivity) context).finish();
                                 context.startActivity(intent);
+                                ((ListaDeCobradoresActivity) context).finish();
 
                                 break;
                             case R.id.popup_deletar:
@@ -170,8 +173,9 @@ public class CobradorRecyclerViewAdapter extends RecyclerView.Adapter<CobradorRe
                                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                                         CobradorDAO dao = new CobradorDAO(context);
                                         dao.deletarCobrador(listaDeCobradores.get(position));
-                                        ((ListaDeCobradoresActivity) context).finish();
+
                                         context.startActivity(new Intent(context, ListaDeCobradoresActivity.class));
+                                        ((ListaDeCobradoresActivity) context).finish();
                                     }
                                 });
 

@@ -32,17 +32,13 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 if(Usuario.tipo.equals("aluno")){
-                    EditarSenhaDeUsuarioActivity.this.finish();
                     startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAlunoActivity.class));
                 }else if( Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
-                    EditarSenhaDeUsuarioActivity.this.finish();
                     startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
                 }else if( Usuario.tipo.equals("admin") ){
-                    EditarSenhaDeUsuarioActivity.this.finish();
                     startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAdminActivity.class));
                 }
-
-                //NavUtils.navigateUpFromSameTask(this);
+                EditarSenhaDeUsuarioActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -71,8 +67,8 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 caixaDeDialogo.setMessage("Senha alterada com sucesso!");
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        EditarSenhaDeUsuarioActivity.this.finish();
                         startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAlunoActivity.class));
+                        EditarSenhaDeUsuarioActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -102,8 +98,8 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 caixaDeDialogo.setMessage("Senha alterada com sucesso!");
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        EditarSenhaDeUsuarioActivity.this.finish();
                         startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+                        EditarSenhaDeUsuarioActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -134,8 +130,8 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        EditarSenhaDeUsuarioActivity.this.finish();
                         startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+                        EditarSenhaDeUsuarioActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -165,8 +161,8 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        EditarSenhaDeUsuarioActivity.this.finish();
                         startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAdminActivity.class));
+                        EditarSenhaDeUsuarioActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();

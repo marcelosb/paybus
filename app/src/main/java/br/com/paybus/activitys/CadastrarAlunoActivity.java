@@ -16,6 +16,7 @@ import br.com.paybus.dao.AlunoDAO;
 import br.com.paybus.dao.PagamentoDAO;
 import br.com.paybus.modelo.Aluno;
 import br.com.paybus.modelo.Pagamento;
+import br.com.paybus.utilitarios.Usuario;
 import br.com.paybus.utilitarios.Verifica;
 
 public class CadastrarAlunoActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosActivity.class));
                 CadastrarAlunoActivity.this.finish();
                 return true;
         }
@@ -48,10 +50,9 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
         aluno = new Aluno();
         dao = new AlunoDAO(this);
 
-        if(TelaPrincipalActivity.novoAlunoPagamento.equals("verdadeiro")){
+        verifica = new Verifica();
 
-            // Cadastrando Aluno
-            Aluno alunoPagamento = new Aluno();
+        if(TelaPrincipalActivity.novoAlunoPagamento.equals("verdadeiro")){
 
             EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeCompletoAluno);
             Spinner comboBoxSelecionarInstituicao = findViewById(R.id.comboBoxSelecionarInstituicaoAluno);
@@ -62,6 +63,8 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
 
             if(verifica.aluno(campoNomeCompletoAluno.getText().toString(), comboBoxSelecionarInstituicao.getSelectedItem().toString(), campoCPFAluno.getText().toString(), campoEmailAluno.getText().toString(), this)){
 
+                // Cadastrando Aluno
+                Aluno alunoPagamento = new Aluno();
                 alunoPagamento.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
                 alunoPagamento.setInstituicao(comboBoxSelecionarInstituicao.getSelectedItem().toString());
                 alunoPagamento.setCpf(campoCPFAluno.getText().toString());
@@ -96,8 +99,8 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
                 caixaDeDialogo.setMessage("Cadastro realizado com sucesso!\n\nNovo(a) aluno(a) adicionado(a) para a lista de pagamentos de "+ListaDeAlunosPagamentos.mesDePagamento);
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        CadastrarAlunoActivity.this.finish();
                         startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosPagamentos.class));
+                        CadastrarAlunoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();
@@ -110,8 +113,6 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
             EditText campoEnderecoAluno = findViewById(R.id.campoEnderecoAluno);
             EditText campoTelefoneAluno = findViewById(R.id.campoTelefoneAluno);
             EditText campoEmailAluno = findViewById(R.id.campoEmailAluno);
-
-            verifica = new Verifica();
 
             if(verifica.aluno(campoNomeCompletoAluno.getText().toString(), comboBoxSelecionarInstituicao.getSelectedItem().toString(), campoCPFAluno.getText().toString(), campoEmailAluno.getText().toString(), this) ){
                 aluno.setNomeCompleto(campoNomeCompletoAluno.getText().toString());
@@ -131,8 +132,8 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
                 caixaDeDialogo.setMessage("Cadastro realizado com sucesso");
                 caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
-                        CadastrarAlunoActivity.this.finish();
                         startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosActivity.class));
+                        CadastrarAlunoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.create();

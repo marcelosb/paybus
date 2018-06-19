@@ -88,8 +88,9 @@ public class ComprovanteDePagamentoAlunoRecyclerViewAdapter extends RecyclerView
                 intent.putExtra("data_do_vencimento_comprovante_de_pagamento", listaDeComprovantesDePagamentos.get(position).getDataDoVencimento());
                 intent.putExtra("valor_comprovante_de_pagamento", listaDeComprovantesDePagamentos.get(position).getValorDoPagamento());
                 intent.putExtra("observacao_comprovante_de_pagamento", listaDeComprovantesDePagamentos.get(position).getObservacao());
-                //((ListaDeAlunosPagamentos) context).finish();
+
                 context.startActivity(intent);
+                ((ListaDeAlunosPagamentos) context).finish();
             }
         });
 

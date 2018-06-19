@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +34,8 @@ public class VisualizarComprovanteDePagamentoAlunoActivity extends AppCompatActi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_visualizar_comprovante_de_pagamento_aluno);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //String teste = getIntent().getStringExtra("mes_e_ano_do_comprovante_de_pagamento");
         TextView txtMesEAnoCP = findViewById(R.id.txtMesEAnoCP);
@@ -64,6 +67,16 @@ public class VisualizarComprovanteDePagamentoAlunoActivity extends AppCompatActi
         txtObservacaoCP.setText("Observação: "+getIntent().getStringExtra("observacao_comprovante_de_pagamento"));
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                VisualizarComprovanteDePagamentoAlunoActivity.this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void botaoGerarPdfComprovanteAluno(View view){

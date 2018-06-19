@@ -71,8 +71,8 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
             public void onClick(View v) {
                 mesPagamento = holder.textoMesDePagamento.getText().toString();
                 dataVencimento = listaDeMesesDePagamentos.get(position).getDataDoVencimento();
-                ((ListarPagamentos) context).finish();
                 context.startActivity(new Intent(context, ListaDeAlunosPagamentos.class));
+                ((ListarPagamentos) context).finish();
             }
 
         });
@@ -91,8 +91,9 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
                                 Intent intent = new Intent(context, EditarNovoMesDePagamentoActivity.class);
                                 intent.putExtra("id_mes_pagamento", listaDeMesesDePagamentos.get(position).getId());
                                 mesPagamento = holder.textoMesDePagamento.getText().toString();
-                                ((ListarPagamentos) context).finish();
+
                                 context.startActivity(intent);
+                                ((ListarPagamentos) context).finish();
 
                                 break;
                             case R.id.popup_deletar:
@@ -115,8 +116,8 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
                                         PagamentoDAO pagamentoDAO = new PagamentoDAO(context);
                                         pagamentoDAO.deletarMesDePagamento(listaDeMesesDePagamentos.get(position).getMesEAnoDoPagamento());
 
-                                        ((ListarPagamentos) context).finish();
                                         context.startActivity(new Intent(context, ListarPagamentos.class));
+                                        ((ListarPagamentos) context).finish();
                                     }
                                 });
                                 caixaDeDialogo.create();
@@ -154,8 +155,9 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
                                 Intent intent = new Intent(context, EditarNovoMesDePagamentoActivity.class);
                                 intent.putExtra("id_mes_pagamento", listaDeMesesDePagamentos.get(position).getId());
                                 mesPagamento = holder.textoMesDePagamento.getText().toString();
-                                ((ListarPagamentos) context).finish();
+
                                 context.startActivity(intent);
+                                ((ListarPagamentos) context).finish();
 
                                 break;
                             case R.id.popup_deletar:
@@ -179,8 +181,8 @@ public class PagamentoRecyclerViewAdapter extends RecyclerView.Adapter<Pagamento
                                         PagamentoDAO pagamentoDAO = new PagamentoDAO(context);
                                         pagamentoDAO.deletarMesDePagamento(listaDeMesesDePagamentos.get(position).getMesEAnoDoPagamento());
 
-                                        ((ListarPagamentos) context).finish();
                                         context.startActivity(new Intent(context, ListarPagamentos.class));
+                                        ((ListarPagamentos) context).finish();
                                     }
                                 });
                                 caixaDeDialogoLongClick.create();

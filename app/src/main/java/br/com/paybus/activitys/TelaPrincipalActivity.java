@@ -51,8 +51,6 @@ public class TelaPrincipalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     public void irParaPainelDeControle(View view){
 
         adminDAO = new AdminDAO(this);
@@ -77,8 +75,8 @@ public class TelaPrincipalActivity extends AppCompatActivity {
                         Usuario.nome = listaAdmin.get(i).getEmail();
                         Usuario.senha = listaAdmin.get(i).getSenha();
                         Usuario.tipo = listaAdmin.get(i).getTipoDeUsuario();
-                        TelaPrincipalActivity.this.finish();
                         startActivity(new Intent(this, PainelDeControleAdminActivity.class));
+                        TelaPrincipalActivity.this.finish();
                         return;
                     }
                 }
@@ -92,8 +90,8 @@ public class TelaPrincipalActivity extends AppCompatActivity {
                         Usuario.nome = listaDeCobradores.get(i).getNomeCompleto();
                         Usuario.senha = listaDeCobradores.get(i).getSenha();
                         Usuario.tipo = listaDeCobradores.get(i).getTipoDeUsuario();
-                        TelaPrincipalActivity.this.finish();
                         startActivity(new Intent(this, PainelDeControleMotoristaCobradorActivity.class));
+                        TelaPrincipalActivity.this.finish();
                         return;
                     }
                 }
@@ -107,8 +105,8 @@ public class TelaPrincipalActivity extends AppCompatActivity {
                         Usuario.nome = listaDeAlunos.get(i).getNomeCompleto();
                         Usuario.senha = listaDeAlunos.get(i).getSenha();
                         Usuario.tipo = listaDeAlunos.get(i).getTipoDeUsuario();
-                        TelaPrincipalActivity.this.finish();
                         startActivity(new Intent(this, PainelDeControleAlunoActivity.class));
+                        TelaPrincipalActivity.this.finish();
                         return;
                     }
                 }
@@ -122,8 +120,8 @@ public class TelaPrincipalActivity extends AppCompatActivity {
                         Usuario.nome = listaDeMotoristas.get(i).getNomeCompleto();
                         Usuario.senha = listaDeMotoristas.get(i).getSenha();
                         Usuario.tipo = listaDeMotoristas.get(i).getTipoDeUsuario();
-                        TelaPrincipalActivity.this.finish();
                         startActivity(new Intent(this, PainelDeControleMotoristaCobradorActivity.class));
+                        TelaPrincipalActivity.this.finish();
                         return;
                     }
                 }

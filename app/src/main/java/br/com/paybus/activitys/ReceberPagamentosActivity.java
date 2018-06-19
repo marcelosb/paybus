@@ -50,8 +50,6 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#7a937a")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         alunoDAO = new AlunoDAO(ReceberPagamentosActivity.this);
         List<Aluno> listaDeAlunos = alunoDAO.listarAlunos();
         listaDeNomes = new ArrayList<String>();

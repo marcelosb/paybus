@@ -20,10 +20,12 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
 
         if( Usuario.tipo.equals("cobrador") ){
             TextView textoNomeCobradorlogado = findViewById(R.id.textoNomeCobradorOuMotoristaLogado);
-            textoNomeCobradorlogado.setText("Olá "+Usuario.nome+"\nVocê está logado(a) como "+ Usuario.tipo+"(a)");
+            setTitle("Painel de Controle Cobrador");
+            textoNomeCobradorlogado.setText("Olá "+Usuario.nome+", seja bem vindo!");
         }else if( Usuario.tipo.equals("motorista") ){
             TextView textoNomeMotoristalogado = findViewById(R.id.textoNomeCobradorOuMotoristaLogado);
-            textoNomeMotoristalogado.setText("Olá "+Usuario.nome+"\nVocê está logado como "+ Usuario.tipo);
+            setTitle("Painel de Controle Motorista");
+            textoNomeMotoristalogado.setText("Olá "+Usuario.nome+", seja bem vindo!");
         }
 
     }
@@ -39,16 +41,16 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
 
         switch (item.getItemId()){
             case R.id.menu_sobre:
-                //PainelDeControleMotoristaCobradorActivity.this.finish();
-                startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, SobreActivity.class));
+                startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, ViewPDFAjudaActivity.class));
+                PainelDeControleMotoristaCobradorActivity.this.finish();
                 break;
             case R.id.menu_alterar_senha:
-                PainelDeControleMotoristaCobradorActivity.this.finish();
                 startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, EditarSenhaDeUsuarioActivity.class));
+                PainelDeControleMotoristaCobradorActivity.this.finish();
                 break;
             case R.id.menu_sair_do_sistema:
-                PainelDeControleMotoristaCobradorActivity.this.finish();
                 startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, TelaPrincipalActivity.class));
+                PainelDeControleMotoristaCobradorActivity.this.finish();
                 break;
              default:
                  break;
@@ -59,14 +61,17 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
 
     public void irParaTelaListaDeAlunos(View view){
         startActivity(new Intent(this, ListaDeAlunosActivity.class));
+        PainelDeControleMotoristaCobradorActivity.this.finish();
     }
 
     public void irParaTelaReceberPagamentos(View view){
-        startActivity(new Intent(this, ReceberPagamentosActivity.class));
+        startActivity(new Intent(this, ListarPagamentos.class));
+        PainelDeControleMotoristaCobradorActivity.this.finish();
     }
 
     public void irParaTelaRelatorios(View view){
         startActivity(new Intent(this, RelatoriosActivity.class));
+        PainelDeControleMotoristaCobradorActivity.this.finish();
     }
 
 }

@@ -37,7 +37,8 @@ public class ListaDeCobradoresActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(ListaDeCobradoresActivity.this, UsuariosActivity.class));
+                ListaDeCobradoresActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -55,8 +56,8 @@ public class ListaDeCobradoresActivity extends AppCompatActivity {
     }
 
     public void irParaCadastrarCobrador(View view){
-        finish();
         startActivity(new Intent(ListaDeCobradoresActivity.this, CadastrarCobradorActivity.class));
+        ListaDeCobradoresActivity.this.finish();
     }
 
 

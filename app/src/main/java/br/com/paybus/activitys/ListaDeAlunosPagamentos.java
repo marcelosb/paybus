@@ -77,8 +77,8 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                ListaDeAlunosPagamentos.this.finish();
                 startActivity(new Intent(ListaDeAlunosPagamentos.this, ListarPagamentos.class));
+                ListaDeAlunosPagamentos.this.finish();
                 return true;
 
             case R.id.menu_devedores:
@@ -111,11 +111,12 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
                 Toast.makeText(this,String.valueOf(ListaDeAlunosPagamentos.numeroDePagadores) +" alunos realizaram o pagamento do ônibus em "+PagamentoRecyclerViewAdapter.mesPagamento, Toast.LENGTH_LONG ).show();
 
                 break;
-            case R.id.menu_estatistica:
 
-                ListaDeAlunosPagamentos.this.finish();
+            case R.id.menu_estatistica:
                 startActivity(new Intent(ListaDeAlunosPagamentos.this, EstatisticaActivity.class));
+                ListaDeAlunosPagamentos.this.finish();
                 break;
+
             default:
                 break;
         }
@@ -154,8 +155,8 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
         TelaPrincipalActivity.novoAlunoPagamento = "verdadeiro";
         mesDePagamento = PagamentoRecyclerViewAdapter.mesPagamento;
         dataDeVencimento = PagamentoRecyclerViewAdapter.dataVencimento;
-        ListaDeAlunosPagamentos.this.finish();
         startActivity(new Intent(ListaDeAlunosPagamentos.this, CadastrarAlunoActivity.class));
+        ListaDeAlunosPagamentos.this.finish();
     }
 
     public void botaoMostrarPagadores(View view){
@@ -192,8 +193,8 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
     }
 
     public void botaoMostrarEstatisticas(View view){
-        ListaDeAlunosPagamentos.this.finish();
         startActivity(new Intent(ListaDeAlunosPagamentos.this, EstatisticaActivity.class));
+        ListaDeAlunosPagamentos.this.finish();
     }
 
 }

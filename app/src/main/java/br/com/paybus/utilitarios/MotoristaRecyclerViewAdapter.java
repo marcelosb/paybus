@@ -84,8 +84,9 @@ public class MotoristaRecyclerViewAdapter extends RecyclerView.Adapter<Motorista
                                 intent.putExtra("telefone_motorista", listaDeMotoristas.get(position).getTelefone());
                                 intent.putExtra("email_motorista", listaDeMotoristas.get(position).getEmail());
 
-                                ((ListaDeMotoristasActivity) context).finish();
                                 context.startActivity(intent);
+                                ((ListaDeMotoristasActivity) context).finish();
+
                                 break;
 
                             case R.id.popup_deletar:
@@ -105,8 +106,8 @@ public class MotoristaRecyclerViewAdapter extends RecyclerView.Adapter<Motorista
                                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                                         MotoristaDAO dao = new MotoristaDAO(context);
                                         dao.deletarMotorista(listaDeMotoristas.get(position));
-                                        ((ListaDeMotoristasActivity) context).finish();
                                         context.startActivity(new Intent(context, ListaDeMotoristasActivity.class));
+                                        ((ListaDeMotoristasActivity) context).finish();
                                     }
                                 });
 
@@ -149,7 +150,9 @@ public class MotoristaRecyclerViewAdapter extends RecyclerView.Adapter<Motorista
                                 intent.putExtra("cnh", listaDeMotoristas.get(position).getCnh());
                                 intent.putExtra("telefone_motorista", listaDeMotoristas.get(position).getTelefone());
                                 intent.putExtra("email_motorista", listaDeMotoristas.get(position).getEmail());
+
                                 context.startActivity(intent);
+                                ((ListaDeMotoristasActivity) context).finish();
 
                                 break;
                             case R.id.popup_deletar:
@@ -171,6 +174,7 @@ public class MotoristaRecyclerViewAdapter extends RecyclerView.Adapter<Motorista
                                         MotoristaDAO dao = new MotoristaDAO(context);
                                         dao.deletarMotorista(listaDeMotoristas.get(position));
                                         context.startActivity(new Intent(context, ListaDeMotoristasActivity.class));
+                                        ((ListaDeMotoristasActivity) context).finish();
                                     }
                                 });
 

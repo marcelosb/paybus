@@ -50,24 +50,22 @@ public class PainelDeControleAlunoActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.menu_sobre:
-                //PainelDeControleAlunoActivity.this.finish();
-                startActivity(new Intent(PainelDeControleAlunoActivity.this, SobreActivity.class));
+                startActivity(new Intent(PainelDeControleAlunoActivity.this, ViewPDFAjudaActivity.class));
+                PainelDeControleAlunoActivity.this.finish();
                 break;
             case R.id.menu_alterar_senha:
-                PainelDeControleAlunoActivity.this.finish();
                 startActivity(new Intent(this, EditarSenhaDeUsuarioActivity.class));
+                PainelDeControleAlunoActivity.this.finish();
                 break;
             case R.id.menu_sair_do_sistema:
-                PainelDeControleAlunoActivity.this.finish();
                 startActivity(new Intent(this, TelaPrincipalActivity.class));
+                PainelDeControleAlunoActivity.this.finish();
                 break;
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 
     private void criarRecyclerViewComprovanteDePagamentoAluno() {
         listaDeComprovantesDePagamentos = new ArrayList<Pagamento>();

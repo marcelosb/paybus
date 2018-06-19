@@ -72,7 +72,8 @@ public class EditarAlunoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(EditarAlunoActivity.this, ListaDeAlunosActivity.class));
+                EditarAlunoActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -105,8 +106,8 @@ public class EditarAlunoActivity extends AppCompatActivity {
         caixaDeDialogo.setMessage("Alteração realizada com sucesso!");
         caixaDeDialogo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
                 startActivity(new Intent(EditarAlunoActivity.this, ListaDeAlunosActivity.class));
+                EditarAlunoActivity.this.finish();
             }
         });
         caixaDeDialogo.create();

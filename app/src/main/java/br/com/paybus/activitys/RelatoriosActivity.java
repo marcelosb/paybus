@@ -20,7 +20,7 @@ public class RelatoriosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                RelatoriosActivity.this.finish();
                 //NavUtils.navigateUpFromSameTask(this);
                 return true;
         }

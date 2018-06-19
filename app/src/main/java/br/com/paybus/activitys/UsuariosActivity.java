@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.paybus.R;
+import br.com.paybus.utilitarios.Usuario;
 
 public class UsuariosActivity extends AppCompatActivity {
 
@@ -22,7 +23,8 @@ public class UsuariosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                startActivity(new Intent(UsuariosActivity.this, PainelDeControleAdminActivity.class));
+                UsuariosActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -30,14 +32,17 @@ public class UsuariosActivity extends AppCompatActivity {
 
     public void irParaCadastroDeMotorista(View view){
         startActivity(new Intent(UsuariosActivity.this, ListaDeMotoristasActivity.class));
+        UsuariosActivity.this.finish();
     }
 
     public void irParaCadastroDeCobrador(View view){
         startActivity(new Intent(UsuariosActivity.this, ListaDeCobradoresActivity.class));
+        UsuariosActivity.this.finish();
     }
 
     public void irParaCadastroDeAluno(View view){
         startActivity(new Intent(UsuariosActivity.this, ListaDeAlunosActivity.class));
+        UsuariosActivity.this.finish();
     }
 
 }

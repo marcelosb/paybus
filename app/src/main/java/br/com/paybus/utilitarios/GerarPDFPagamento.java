@@ -15,6 +15,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import br.com.paybus.activitys.ListaDeAlunosActivity;
+import br.com.paybus.activitys.ReceberPagamentoActivity;
 import br.com.paybus.activitys.ViewPDFActivity;
 import br.com.paybus.modelo.Pagamento;
 import br.com.paybus.modelo.Pagamentos;
