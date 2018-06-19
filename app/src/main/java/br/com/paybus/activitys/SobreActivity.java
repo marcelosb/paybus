@@ -28,4 +28,10 @@ public class SobreActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SobreActivity.this, ViewPDFAjudaActivity.class));
+        SobreActivity.this.finish();
+    }
 }

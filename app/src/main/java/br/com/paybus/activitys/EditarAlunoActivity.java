@@ -79,6 +79,12 @@ public class EditarAlunoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditarAlunoActivity.this, ListaDeAlunosActivity.class));
+        EditarAlunoActivity.this.finish();
+    }
+
     public void editarAluno(View view){
 
         EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeAlunoEditar);

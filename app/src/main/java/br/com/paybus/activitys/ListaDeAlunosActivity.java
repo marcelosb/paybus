@@ -73,6 +73,16 @@ public class ListaDeAlunosActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(Usuario.tipo.equals("admin")){
+            startActivity(new Intent(ListaDeAlunosActivity.this, UsuariosActivity.class));
+        }else if( Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
+            startActivity(new Intent(ListaDeAlunosActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+        }
+        ListaDeAlunosActivity.this.finish();
+    }
+
     private void filtro(String text){
         ArrayList<Aluno> novaLista = new ArrayList<>();
         for(Aluno aluno: listaAlunos){

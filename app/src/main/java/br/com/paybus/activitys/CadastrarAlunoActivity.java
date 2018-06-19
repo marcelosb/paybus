@@ -45,6 +45,12 @@ public class CadastrarAlunoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CadastrarAlunoActivity.this, ListaDeAlunosActivity.class));
+        CadastrarAlunoActivity.this.finish();
+    }
+
 
     public void cadastrarAluno(View view){
         aluno = new Aluno();

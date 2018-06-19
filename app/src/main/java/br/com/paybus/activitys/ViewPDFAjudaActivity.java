@@ -66,4 +66,16 @@ public class ViewPDFAjudaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(Usuario.tipo.equals("admin")){
+            startActivity(new Intent(ViewPDFAjudaActivity.this, PainelDeControleAdminActivity.class));
+        }else if(Usuario.tipo.equals("aluno")){
+            startActivity(new Intent(ViewPDFAjudaActivity.this, PainelDeControleAlunoActivity.class));
+        }else if(Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista")){
+            startActivity(new Intent(ViewPDFAjudaActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+        }
+        ViewPDFAjudaActivity.this.finish();
+    }
+
 }

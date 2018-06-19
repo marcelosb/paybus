@@ -50,6 +50,12 @@ public class PainelDeControleAdminActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PainelDeControleAdminActivity.this, TelaPrincipalActivity.class));
+        PainelDeControleAdminActivity.this.finish();
+    }
+
     public void irParaTelaUsuarios(View view){
         startActivity(new Intent(PainelDeControleAdminActivity.this, UsuariosActivity.class));
         PainelDeControleAdminActivity.this.finish();

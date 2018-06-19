@@ -123,6 +123,11 @@ public class ListaDeAlunosPagamentos extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ListaDeAlunosPagamentos.this, ListarPagamentos.class));
+        ListaDeAlunosPagamentos.this.finish();
+    }
 
     private void criarRecyclerViewPagamentoAluno() {
         listaPagamentosAlunos = new ArrayList<Pagamento>();

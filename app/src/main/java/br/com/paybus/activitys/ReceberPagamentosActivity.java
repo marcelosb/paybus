@@ -92,6 +92,11 @@ public class ReceberPagamentosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     public void botaoRealizarPagamento( View view){
         //iniciando a variavel gerar pdf
         gerarPDF = new GerarPDFPagamento(getApplicationContext());

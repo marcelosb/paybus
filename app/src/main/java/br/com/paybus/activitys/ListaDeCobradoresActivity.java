@@ -44,6 +44,12 @@ public class ListaDeCobradoresActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ListaDeCobradoresActivity.this, UsuariosActivity.class));
+        ListaDeCobradoresActivity.this.finish();
+    }
+
     private void criarRecyclerViewCobrador() {
         listaCobradores = new ArrayList<Cobrador>();
         dao = new CobradorDAO(this);

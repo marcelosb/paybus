@@ -157,6 +157,12 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ReceberPagamentoActivity.this, ListaDeAlunosPagamentos.class));
+        ReceberPagamentoActivity.this.finish();
+    }
+
     public void botaoRealizarPagamentoDoAlunoSelecionado(View view){
 
         if(PagamentoAlunoRecyclerViewAdapter.editarPagamento){
@@ -212,7 +218,7 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                         chamarPermissaoGravacao(pagamento);
-                        ReceberPagamentoActivity.this.finish();
+                        //ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -267,7 +273,10 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
                 pagamentoDAO.atualizarPagamento(pagamento);
 
                 //iniciando a variavel gerar pdf
-                gerarPDF = new GerarPDFPagamento(getApplicationContext());
+                //gerarPDF = new GerarPDFPagamento(getApplicationContext());
+
+                gerarPDF = new GerarPDFPagamento(ReceberPagamentoActivity.this);
+
                 //inicinado o objeto pagamento
                 //pagamento = new Pagamentos("20/05/2017","25/05/2017", 100.00, "pago", "Luan Ramons Silva Linhares", "Isabela Ferreira Andrade","José Anchieta Gomes" , "Pagou com atraso, não foi cobrado nenhum valor adicional");
 
@@ -278,7 +287,7 @@ public class ReceberPagamentoActivity extends AppCompatActivity {
                 caixaDeDialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialogInterface, int i) {
                         chamarPermissaoGravacao(pagamento);
-                        ReceberPagamentoActivity.this.finish();
+                        //ReceberPagamentoActivity.this.finish();
                     }
                 });
                 caixaDeDialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {

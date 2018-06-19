@@ -48,6 +48,12 @@ public class ParteFinanceiraActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ParteFinanceiraActivity.this, PainelDeControleAdminActivity.class));
+        ParteFinanceiraActivity.this.finish();
+    }
+
     private void criarRecyclerViewParteFinanceira() {
         listaMesesPagamentosFinanceiro = new ArrayList<>();
         dao = new MesDoPagamentoDAO(this);

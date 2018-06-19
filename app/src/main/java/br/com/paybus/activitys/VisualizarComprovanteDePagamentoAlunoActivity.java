@@ -3,6 +3,7 @@ package br.com.paybus.activitys;
 import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -73,10 +74,17 @@ public class VisualizarComprovanteDePagamentoAlunoActivity extends AppCompatActi
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+                startActivity(new Intent(VisualizarComprovanteDePagamentoAlunoActivity.this, PainelDeControleAlunoActivity.class));
                 VisualizarComprovanteDePagamentoAlunoActivity.this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(VisualizarComprovanteDePagamentoAlunoActivity.this, PainelDeControleAlunoActivity.class));
+        VisualizarComprovanteDePagamentoAlunoActivity.this.finish();
     }
 
     public void botaoGerarPdfComprovanteAluno(View view){

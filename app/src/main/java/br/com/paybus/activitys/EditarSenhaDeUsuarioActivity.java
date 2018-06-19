@@ -44,6 +44,18 @@ public class EditarSenhaDeUsuarioActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(Usuario.tipo.equals("aluno")){
+            startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAlunoActivity.class));
+        }else if( Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
+            startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleMotoristaCobradorActivity.class));
+        }else if( Usuario.tipo.equals("admin") ){
+            startActivity(new Intent(EditarSenhaDeUsuarioActivity.this, PainelDeControleAdminActivity.class));
+        }
+        EditarSenhaDeUsuarioActivity.this.finish();
+    }
+
     public void alterarSenhaDoUsuario(View view) {
 
         EditText campoSenha = findViewById(R.id.campoSenhaAtual);

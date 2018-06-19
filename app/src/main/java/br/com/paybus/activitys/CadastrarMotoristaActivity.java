@@ -44,6 +44,12 @@ public class CadastrarMotoristaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CadastrarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+        CadastrarMotoristaActivity.this.finish();
+    }
+
 
     public void cadastrarMotorista(View view){
         motorista = new Motorista();

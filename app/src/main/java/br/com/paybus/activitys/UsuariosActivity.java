@@ -30,6 +30,12 @@ public class UsuariosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(UsuariosActivity.this, PainelDeControleAdminActivity.class));
+        UsuariosActivity.this.finish();
+    }
+
     public void irParaCadastroDeMotorista(View view){
         startActivity(new Intent(UsuariosActivity.this, ListaDeMotoristasActivity.class));
         UsuariosActivity.this.finish();

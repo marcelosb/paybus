@@ -92,6 +92,12 @@ public class CadastrarNovoMesDePagamento extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CadastrarNovoMesDePagamento.this, ListarPagamentos.class));
+        CadastrarNovoMesDePagamento.this.finish();
+    }
+
     public void botaoAdicionarNovoMesDePagamento(View view){
 
         mesDoPagamento = new MesDoPagamento();

@@ -44,6 +44,12 @@ public class ListaDeMotoristasActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ListaDeMotoristasActivity.this, UsuariosActivity.class));
+        ListaDeMotoristasActivity.this.finish();
+    }
+
     private void filtro(String text){
         ArrayList<Motorista> novaLista = new ArrayList<Motorista>();
         for(Motorista motorista: listaMotoristas){

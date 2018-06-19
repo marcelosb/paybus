@@ -79,6 +79,12 @@ public class EditarCobradorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditarCobradorActivity.this, ListaDeCobradoresActivity.class));
+        EditarCobradorActivity.this.finish();
+    }
+
     public void editarCobrador(View view){
 
         EditText campoNomeCompletoAluno = findViewById(R.id.campoNomeCobradorEditar);

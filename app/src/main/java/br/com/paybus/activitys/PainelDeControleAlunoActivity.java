@@ -67,6 +67,12 @@ public class PainelDeControleAlunoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, TelaPrincipalActivity.class));
+        PainelDeControleAlunoActivity.this.finish();
+    }
+
     private void criarRecyclerViewComprovanteDePagamentoAluno() {
         listaDeComprovantesDePagamentos = new ArrayList<Pagamento>();
         dao = new PagamentoDAO(this);

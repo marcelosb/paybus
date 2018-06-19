@@ -59,6 +59,12 @@ public class PainelDeControleMotoristaCobradorActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PainelDeControleMotoristaCobradorActivity.this, TelaPrincipalActivity.class));
+        PainelDeControleMotoristaCobradorActivity.this.finish();
+    }
+
     public void irParaTelaListaDeAlunos(View view){
         startActivity(new Intent(this, ListaDeAlunosActivity.class));
         PainelDeControleMotoristaCobradorActivity.this.finish();

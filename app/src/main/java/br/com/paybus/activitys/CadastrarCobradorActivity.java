@@ -45,6 +45,12 @@ public class CadastrarCobradorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CadastrarCobradorActivity.this, ListaDeCobradoresActivity.class));
+        CadastrarCobradorActivity.this.finish();
+    }
+
     public void cadastrarCobrador(View view){
         cobrador = new Cobrador();
         dao = new CobradorDAO(this);

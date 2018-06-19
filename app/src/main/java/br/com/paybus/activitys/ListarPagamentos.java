@@ -49,6 +49,16 @@ public class ListarPagamentos extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(Usuario.tipo.equals("admin")){
+            startActivity(new Intent(ListarPagamentos.this, PainelDeControleAdminActivity.class));
+        }else if(Usuario.tipo.equals("cobrador") || Usuario.tipo.equals("motorista") ){
+            startActivity(new Intent(ListarPagamentos.this, PainelDeControleMotoristaCobradorActivity.class));
+        }
+        ListarPagamentos.this.finish();
+    }
+
     private void criarRecyclerViewPagamentoPorMes() {
         listaPagamentosMes = new ArrayList<MesDoPagamento>();
         dao = new MesDoPagamentoDAO(this);

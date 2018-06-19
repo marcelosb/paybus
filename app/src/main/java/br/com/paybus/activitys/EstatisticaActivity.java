@@ -83,6 +83,12 @@ public class EstatisticaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EstatisticaActivity.this, ListaDeAlunosPagamentos.class));
+        EstatisticaActivity.this.finish();
+    }
+
     public void setDados(int dados){
         ArrayList<BarEntry> listaValores = new ArrayList<>();
         for(int i=0; i<dados; i++){

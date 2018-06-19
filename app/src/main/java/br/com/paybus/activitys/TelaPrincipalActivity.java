@@ -51,6 +51,11 @@ public class TelaPrincipalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        TelaPrincipalActivity.this.finish();
+    }
+
     public void irParaPainelDeControle(View view){
 
         adminDAO = new AdminDAO(this);

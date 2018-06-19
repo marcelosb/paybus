@@ -57,6 +57,11 @@ public class EditarNovoMesDePagamentoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditarNovoMesDePagamentoActivity.this, ListarPagamentos.class));
+        EditarNovoMesDePagamentoActivity.this.finish();
+    }
 
     public void botaoEditarNovoMesDePagamento(View view){
 

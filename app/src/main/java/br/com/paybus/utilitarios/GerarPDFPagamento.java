@@ -155,6 +155,7 @@ public class GerarPDFPagamento {
         intent.putExtra("path",pastaPDF.getAbsolutePath());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+        ((ReceberPagamentoActivity) context).finish();
     }
 
 

@@ -70,6 +70,12 @@ public class EditarMotoristaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditarMotoristaActivity.this, ListaDeMotoristasActivity.class));
+        EditarMotoristaActivity.this.finish();
+    }
+
     public void editarMotorista(View view){
 
         EditText campoNomeCompleto = findViewById(R.id.campoNomeMotoristaEditar);
